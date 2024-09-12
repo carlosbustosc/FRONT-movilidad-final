@@ -1,0 +1,32 @@
+
+<app-navbar></app-navbar>
+
+<!--conetenedor inicial-->
+<div class="container-fluid contenedor_principal_inicio">
+    <div class="container contenedor_inicial">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="titulo_movilidad">Todos los servicios de tránsito y transporte de Bogotá en un solo lugar.</h2>
+
+                <p class="texto_agendamiento">Agenda tu cita de forma gratuita y sin intermediarios.
+                    ¡Eficiente, ágil y segura!</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://serviciosdetransito.com/wp-content/uploads/2021/12/MEJORSINFILA_400X400-1.jpg" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--servicios-->
+<div class="container contenedor_servicios">
+    <div class="row">
+
+        <h2 class="titulo_intermedio"> SERVICIOS</h2>
+        <app-tarjeta [seccionHijo]="seccion" *ngFor="let seccion of secciones; let i = index"></app-tarjeta>
+
+    </div>
+</div>
+
+<app-footer></app-footer>

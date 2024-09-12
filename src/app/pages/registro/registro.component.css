@@ -1,0 +1,11 @@
+.fondo_principal_login {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    align-items: center;
+    background-image:url('https://www.bartolomeconsultores.com/wp-content/uploads/2015/10/fondo-formulario.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+

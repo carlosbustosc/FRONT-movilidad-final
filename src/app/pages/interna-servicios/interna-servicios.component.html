@@ -1,0 +1,275 @@
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 ancho_de_menu">
+            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_interna">
+
+            <li class="boton_interna" (click)="miPerfil()">Mi perfil</li>
+            <li class="boton_interna" (click)="agendarCita()">Agendar cita</li>
+            <li class="boton_interna" (click)="miVehiculo()">Mi vehiculo</li>
+
+            <img src="./assets/img/triptico.svg" class="logo_distrito"/>
+        </div>
+        <div class="col-md-9">
+
+            <div class="header_cerrar_sesion">
+                <div class="contenedor_cerrar">
+                    <img alt="Image placeholder" src="https://vus.circulemosdigital.com.co/assets/img/theme/profile.png" class="tw-cursor-pointer">
+
+                    <p class="texto_nombre">Carlos alberto Bustos caviedes <span class="texto_cerrar_sesion"> Cerrar sesion</span></p>
+                </div>
+            </div>
+
+            <!--bienvenida-->
+            <div class="base_interna_principal" *ngIf="pantallaBienvenida">
+                <div class="base_bienvenida">
+                    <h1 class="nombre_bienvenida">Hola Carlos bustos bienvenido</h1>
+                    <p class="texto_bienvenida">Aquí podrás gestionar y hacer seguimiento a los trámites y servicios de tránsito y transporte que realices en la ciudad de Bogotá.</p>
+                    <img src="https://vus.circulemosdigital.com.co/assets/svg/usuario-mesa-trabajo.svg" class="imagen_bienvenida"/>
+                </div>
+            </div>
+
+
+            <!---mi perfil-->
+            <div class="container" *ngIf="pantallaPerfil">
+                <form class="fomulario">
+                 
+                    <h2 class="text-registro">Puedes actualizar los datos</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select class="form-control">
+                                <option>Seleccione Tipo de documento</option>
+                                <option value="CC">cedula de ciudadania</option>
+                                <option value="NIT">NIT</option>
+                                <option value="CE">Cédula de Extranjería</option>
+                                <option value="PA">Pasaporte</option>
+                                <option value="RC">Registro Civil</option>
+                                <option value="TI">Tarjeta de Identidad</option>
+                                <option value="NUIP">Número Único de Identificación</option>
+                                <option value="CD">Carnet Diplomático</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Número de documento"/>
+                            </div>
+        
+                            <div class="form-group">
+                                <label>Seleccione fecha de nacimiento</label>
+                                <input type="date"  class="form-control"/>
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="text" placeholder="Escriba su nombre" class="form-control"/>
+                            </div>
+        
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Seleccion genero</option>
+                                    <option>Hombre</option>
+                                    <option>Mujer</option>
+                                </select>
+        
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Escriba correo electronico"/>
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Escriba la contraseña"/>
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Valide la contraseña"/>
+                            </div>
+        
+                           
+                            
+                        </div>
+        
+                        
+                        <!--------columna 2------------>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Confirmar Número de documento"/>
+                            </div>
+        
+                            <div class="form-group">
+                                <label>fecha de expedicion documento</label>
+                                <input type="date"  class="form-control"/>
+                            </div>
+        
+                            <div class="form-group">
+                                <input type="text" placeholder="Escriba su apellido" class="form-control"/>
+                            </div>
+        
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>RH</option>
+                                    <option value="positivo">Positivo</option>
+                                    <option value="negativo">Negativo</option>
+                                </select>
+                            </div>
+        
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Grupo sanguineo</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="O">O</option>
+                                    <option value="AB">AB</option>
+                                </select>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <select class="form-control" (change)="valorDepartamentoPerfil($event)">
+                                    <option>Seleccione el departamento</option>
+                                    <option *ngFor="let depart of departamentos; let i = index" [value]="i">{{ depart.departamento
+                                    }}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Seleccione el ciudad</option>
+                                    <option *ngFor="let city of ciudades; let i = index" [value]="i">{{ city
+                                    }}</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+        
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-primary">Actualizar</button>
+                        </div>
+                    </div>
+                 </form>
+            </div>
+
+
+            <!---agendar cita--->
+            <div class="contenedor_agendar_cita" *ngIf="pantallaCita">
+                <div class="container"> 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="ancho_formulario">
+                                <img _ngcontent-ng-c4235106435="" src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_interna">
+                                
+                                <div class="form-group">
+                                    <label>Ingrese cedula</label>
+                                    <input type="text" class="form-control" placeholder="Escriba su cedula de ciudadania"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Ingrese nombre</label>
+                                    <input type="text" class="form-control" placeholder="Escriba su nombre completo"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Ingrese correo</label>
+                                    <input type="text" class="form-control" placeholder="Escriba su correo electronico"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Ingrese fecha de cita</label>
+                                    <input type="date" class="form-control" />
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Seleccione departamento</label>
+                                    <select class="form-control" (change)="valorDepartamento($event)">
+                                        <option>Seleccione el departamento</option>
+                                        <option *ngFor="let depart of departamentos; let i = index" [value]="i">{{ depart.departamento
+                                        }}</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Seleccione ciudad</label>
+                                    <select class="form-control" >
+                                        <option>Seleccione el ciudad</option>
+                                        <option *ngFor="let city of ciudades; let i = index" [value]="i">{{ city
+                                        }}</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Ingrese motivo de la cita</label>
+                                    <textarea type="date" class="form-control"> </textarea>
+                                </div>
+
+                                <button class="btn btn-primary">Agendar cita</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--mi vehiculo-->
+            <div class="container" *ngIf="pantallaMiVehiculo">
+                <div class="row ancho_fila">
+                    <div class="col-md.12">
+                        <h1 _ngcontent-ng-c2098319837="" class="nombre_bienvenida">Historial de tu vehiculo</h1>
+                        <img _ngcontent-ng-c2098319837="" src="https://vus.circulemosdigital.com.co/assets/svg/usuario-mesa-trabajo.svg" class="imagen_bienvenida">
+
+                        <table class="table table-dark contendor_tabla">
+                           
+                            <tbody>
+                              <tr>
+                                <th scope="row">Documento</th>
+                                <td>Mark</td>
+                               
+                               
+                              </tr>
+                              <tr>
+                                <th scope="row">Nombre</th>
+                                <td>Jacob</td>
+                               
+                                
+                              </tr>
+                              <tr>
+                                <th scope="row">Marca</th>
+                                <td>Larry</td>
+                              
+                               
+                              </tr>
+                              <tr>
+                                <th scope="row">Modelo</th>
+                                <td>Larry</td>
+                              
+                              
+                              </tr>
+                              <tr>
+                                <th scope="row">Placa</th>
+                                <td>Larry</td>
+                               
+                               
+                              </tr>
+                              <tr>
+                                <th scope="row">Precio</th>
+                                <td>Larry</td>
+                               
+                               
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

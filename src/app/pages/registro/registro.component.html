@@ -1,0 +1,134 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid fondo_principal_login">
+    <div class="container">
+        <button type="button" class="volver btn btn-success" (click)="volver()">Volver</button>
+        <form class="fomulario">
+            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_dE_movilidad"/>
+            <h2 class="text-registro">Registrese para poder acceder a los beneficios</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <select class="form-control">
+                        <option>Seleccione Tipo de documento</option>
+                        <option value="CC">cedula de ciudadania</option>
+                        <option value="NIT">NIT</option>
+                        <option value="CE">Cédula de Extranjería</option>
+                        <option value="PA">Pasaporte</option>
+                        <option value="RC">Registro Civil</option>
+                        <option value="TI">Tarjeta de Identidad</option>
+                        <option value="NUIP">Número Único de Identificación</option>
+                        <option value="CD">Carnet Diplomático</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Número de documento"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Seleccione fecha de nacimiento</label>
+                        <input type="date"  class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Escriba su nombre" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>Seleccion genero</option>
+                            <option>Hombre</option>
+                            <option>Mujer</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Escriba correo electronico"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Escriba la contraseña"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Valide la contraseña"/>
+                    </div>
+
+                   
+                    
+                </div>
+
+                
+
+                <!--------columna 2------------>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Confirmar Número de documento"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>fecha de expedicion documento</label>
+                        <input type="date"  class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Escriba su apellido" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>RH</option>
+                            <option value="positivo">Positivo</option>
+                            <option value="negativo">Negativo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>Grupo sanguineo</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="O">O</option>
+                            <option value="AB">AB</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <select class="form-control" (change)="valorDepartamentoRegistro($event)">
+                                <option>Seleccione el departamento</option>
+                                <option *ngFor="let depart of departamentos; let i = index" [value]="i">{{ depart.departamento
+                                }}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Seleccione el ciudad</option>
+                                <option *ngFor="let city of ciudades; let i = index" [value]="i">{{ city
+                                }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary">Registrar</button>
+                </div>
+
+                <div class="col-md-12 bajar_texto">
+                    <p>¿Ya estoy registrado? -
+                    <span class="text_ingreso" [routerLink]="['/login']"> Entonces ingrese </span></p>
+                </div>
+            </div>
+         </form>
+        
+    </div>
+</div>
+
+
+<app-footer></app-footer>

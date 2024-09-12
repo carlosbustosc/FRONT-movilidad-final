@@ -1,0 +1,51 @@
+.contenedor_header{
+
+    background-color: #fff;
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+.logo_mobilidad {
+    width: 166px;
+    margin-left: 45px;
+    padding: 20px;
+}
+
+.quitar_margenes{
+
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.menu_principal{
+
+    width: 100%;
+    display: table;
+    margin-top: 17px;
+}
+
+li{
+    list-style: none;
+    font-size: 17px;
+    float: left;
+    padding: 20px 12px;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+li:hover{
+
+    text-decoration: underline;
+   color:#6332e5;
+}
+
+li.boton_ingresar{
+    float: right;
+    border: 1px solid #4822ad;
+    padding: 6px 10px;
+    font-size: 14px;
+    position: relative;
+    top: 16px;
+    right: 27px;
+}

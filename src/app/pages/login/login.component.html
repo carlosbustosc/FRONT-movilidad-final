@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid fondo_principal_login">
+
+    <div class="container">
+        
+        <button type="button" class="volver btn btn-success" (click)="volver()">Volver</button>
+
+        <form class="fomulario">
+            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_dE_movilidad"/>
+            <h2 class="text-registro">Ingrese para agendar cita</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Escriba su numero de documento</label>
+                        <input type="text" class="form-control" placeholder="Escriba su numero de docmuento">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Escriba su contraseña</label>
+                        <input type="text" class="form-control" placeholder="Escriba su contraseña">
+                    </div>
+                </div>
+                
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary">Ingresar</button>
+                </div>
+
+                <div class="col-md-12 bajar_texto">
+                    <p>¿No esta registrado? -<span class="text_ingreso" [routerLink]="['/registro']"> Entonces Registrese</span></p>
+                </div>
+            </div>
+         </form>
+        
+    </div>
+</div>
+
+
+<app-footer></app-footer>
+

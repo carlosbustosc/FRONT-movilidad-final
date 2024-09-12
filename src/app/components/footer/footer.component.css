@@ -1,0 +1,19 @@
+.contenedor_footer{
+    background-color: #20223e;
+    padding: 40px 0px 60px 0px;
+}
+
+.titulo_atencion {
+    font-size: 19px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.texto_creditos {
+    font-size: 15px;
+    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 24px;
+    margin-bottom: 4px;
+}

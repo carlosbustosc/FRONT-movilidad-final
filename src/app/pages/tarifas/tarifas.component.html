@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="contenedor_principal_tarifas">
+    <div class="container tarifas">
+        <button type="button" class="volver btn btn-success" (click)="volver()">Volver</button>
+        <h2 class="valor_tarifas">Valor tarifas</h2>
+        <p class="text-tarifas">Vigentes a partir del 27 de mayo de 2024</p>
+        <div class="row">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Trámite</th>
+                    <th scope="col">Concepto</th>
+                    <th scope="col">Distrito Capital</th>
+                    <th scope="col">Ministerio de Transporte</th>
+                    <th scope="col">RUNT pais</th>
+                    <th scope="col">Total tramite</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of tarifas; let i = index">
+                    <th scope="row">{{ data.tramite }}</th>
+                    <td>{{ data.concepto }}</td>
+                    <td>{{ data.distrito }}</td>
+                    <td>{{ data.MinTarnsporte }}</td>
+                    <td>{{ data.runt }}</td>
+                    <th>{{ data.total }}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

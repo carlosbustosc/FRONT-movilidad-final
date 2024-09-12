@@ -1,0 +1,78 @@
+
+
+<app-navbar></app-navbar>
+
+<div class="container-fluid fondo_principal_login">
+    <div class="container">
+        <button type="button" class="volver btn btn-success" (click)="volver()">Volver</button>
+        <form class="fomulario">
+            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_dE_movilidad"/>
+            <h2 class="text-registro">Coloque los datos del vehiculo</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <select class="form-control" [(ngModel)]="selectedMarca" (change)="marcaSeleccionada($event)" name="marca">
+
+                            <option [value]='null'>Seleccione marca de vehiculo</option>
+                            
+                            <option [value]="marcas.Slug" *ngFor="let marcas of todasLasMarcasVehiculos">{{ marcas.Nombre }}</option>
+                        
+                        </select>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" [(ngModel)]="depatamentoInicial" name="depart" (change)="departamentoSeleccionado($event)">
+                            <option [value]="null">Selecciones departamento de matricula</option>
+
+                            <option *ngFor="let depart of departamentos" [value]="depart.departamento">{{ depart.departamento
+                            }}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="precio" [(ngModel)]="resetiarPrecio" (input)="precioCarro($event)" class="form-control" placeholder="Escriba el precio de su vehiculo en COP"/>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" (click)="verPantallaImpuesto()" *ngIf="btnImpuesto">Ver impuesto</button>
+                    </div>
+
+                    <div class="form-group" *ngIf="mostrarResultadoImpuesto">
+                        <h2 class="titulo_impuesto">Su vehiculo {{ this.marcaSelec }} </h2>
+                        <h3 class="departamento_impuesto">Matriculado en {{ this.departamentSelect }} debe pagar:</h3>
+                        <p class="precio_del_vehiculo">$ {{ precioImpuesto }}</p>
+    
+                        <div class="base_otra_busqueda">
+                            <button type="button" class="btn btn-primary bajar_boton" (click)="OtraBusqueda()" >Otra Busqueda</button>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="col-md-6 border-left">
+                    <h2 class="text-placa">Si esta registrado consulte por la placa</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="ingrese numero de placa"/>
+                    </div>
+
+                    <div class="form-group bajar_texto">
+                        <p>¿No esta registrado? <span class="text_ingreso" [routerLink]="['/registroVehiculo']"> registrar mi vehiculo</span></p>
+                    </div>
+    
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" (click)="consultarPlaca()" *ngIf="btnPlaca">Consultar por placa</button>
+                    </div>
+                </div>
+            </div>
+         </form>
+    </div>
+</div>
+
+
+
+
+
+
+<app-footer></app-footer>

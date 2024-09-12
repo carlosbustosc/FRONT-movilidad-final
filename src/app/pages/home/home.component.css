@@ -1,0 +1,42 @@
+.container.contenedor_inicial {
+    background-color: #20223edb;
+    padding: 112px 40px;
+}
+
+.titulo_movilidad {
+    font-size: 34px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+p.texto_agendamiento {
+    font-size: 20px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 30px;
+}
+
+.contenedor_principal_inicio {
+  
+    background-image: url('https://www.movilidadbogota.gov.co/web/sites/default/files/Noticias/09-01-2024/1_0.jpg');
+    background-size: cover;
+    margin-bottom: 60px;
+    background-position-y: -149px;
+}
+
+.contenedor_servicios{
+
+    margin-bottom: 131px;
+    margin-top: 68px;
+}
+
+.titulo_intermedio {
+    font-size: 27px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 34px;
+    text-align: center;
+}
