@@ -6,49 +6,59 @@
         
         <button type="button" class="volver btn btn-success" (click)="volver()">Volver</button>
 
-        <form class="fomulario">
+        <form class="fomulario" [formGroup]="registroVehiculo">
             <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_dE_movilidad"/>
             <h2 class="text-registro">REGISTRE SU VEHÍCULO</h2>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Escriba su numero de documento</label>
-                        <input type="text" class="form-control" placeholder="Escriba su numero de docmuento">
+                        <input type="text" class="form-control" placeholder="Escriba su numero de docmuento" formControlName="numeroCedula">
+                        <small class="text-danger" *ngIf="numeroCedula">Coloque su numero de documento</small>
                     </div>
 
                     <div class="form-group">
                         <label>Escriba su nombre</label>
-                        <input type="text" class="form-control" placeholder="Escriba su numero de docmuento">
+                        <input type="text" class="form-control" placeholder="Escriba su numero de docmuento" formControlName="nombrePersona">
+                        <small class="text-danger" *ngIf="nombrePersona">Coloque su nombre</small>
                     </div>
 
                     <div class="form-group">
                         <label>Seleccione marca del vehiculo</label>
-                        <select class="form-control">
+                        <select class="form-control" formControlName="marcaVehiculo">
                             <option>Seleccione la marca</option>
 
                             <option *ngFor="let marca of vehiculos" [value]=" marca.Slug ">{{ marca.Nombre }} </option>
                         </select>
+                        <small class="text-danger" *ngIf="marcaVehiculo">Coloque la marca</small>
+
                     </div>
 
                     <div class="form-group">
                         <label>Escriba modelo(optra, aveo etc.)</label>
-                        <input type="text" class="form-control" placeholder="Escriba su contraseña">
+                        <input type="text" class="form-control" placeholder="Escriba su contraseña" formControlName="modeloVechiculo">
+                        <small class="text-danger" *ngIf="modeloVechiculo">Escriba el modelo</small>
+
                     </div>
 
                     <div class="form-group">
                         <label>Placa</label>
-                        <input type="text" class="form-control" placeholder="Escriba su contraseña">
+                        <input type="text" class="form-control" placeholder="Escriba la placa" formControlName="placa">
+                        <small class="text-danger" *ngIf="placa">Escriba la placa</small>
+
                     </div>
 
                     <div class="form-group">
                         <label>Precio</label>
-                        <input type="text" class="form-control" placeholder="Escriba su contraseña">
+                        <input type="number" class="form-control" placeholder="Escriba el precio" formControlName="precio">
+                        <small class="text-danger" *ngIf="precio">Escriba el precio</small>
+
                     </div>
                 </div>
                 
 
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-primary">Ingresar</button>
+                    <button type="button" class="btn btn-primary" (click)="registrar()">Registrar vehiculo</button>
                 </div>
 
                 

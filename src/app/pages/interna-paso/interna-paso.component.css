@@ -1,0 +1,55 @@
+
+.contenedor_informacion{
+    width: 100%;
+    max-width: 600px;
+    display: table;
+    margin: 0px auto 0px auto;
+}
+
+.titulo {
+    font-size: 30px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    padding: 0px 0px;
+    color: #9b80e2;
+    margin: 37px 0px 22px 0px;
+}
+
+.texto_introduccion {
+    font-size: 18px;
+    color: #595959;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 27px;
+    margin-bottom: 28px;
+}
+
+.detalle_foto {
+    font-size: 14px;
+    color: #777373;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 29px;
+    margin-bottom: 28px;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.puntosTexto {
+    font-size: 15px;
+    color: #595959;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 25px;
+    margin-bottom: 13px;
+}
+
+.detalle_punto {
+    
+    font-weight: 700;
+    margin-right: 8px;
+    color: #9b80e2;
+    font-size: 25px;
+}
+
+.container.contenedor_pasoInterna {
+    margin: 60px auto;
+}

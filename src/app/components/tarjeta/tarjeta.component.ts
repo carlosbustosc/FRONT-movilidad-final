@@ -25,6 +25,8 @@ export class TarjetaComponent {
     console.log( seccionHijo.pagina )
 
     this.usarRuta.navigate( [seccionHijo.pagina] )
+
+    window.scrollTo(0,0);
   
   }
 

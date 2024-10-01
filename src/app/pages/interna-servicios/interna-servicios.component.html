@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 ancho_de_menu">
-            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_interna">
+            <img src="./assets/img/logo-pmss2.png" class="logo_menu">
 
             <li class="boton_interna" (click)="miPerfil()">Mi perfil</li>
             <li class="boton_interna" (click)="agendarCita()">Agendar cita</li>
@@ -158,56 +158,64 @@
                 <div class="container"> 
                     <div class="row">
                         <div class="col-md-12">
-                            <form class="ancho_formulario">
+                            <form class="ancho_formulario" [formGroup]="agendamientoCita">
                                 <img _ngcontent-ng-c4235106435="" src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_interna">
                                 
                                 <div class="form-group">
                                     <label>Ingrese cedula</label>
-                                    <input type="text" class="form-control" placeholder="Escriba su cedula de ciudadania"/>
+                                    <input type="text" class="form-control" placeholder="Escriba su cedula de ciudadania" formControlName="numCedula"/>
+                                    <small class="text-danger" *ngIf="numCedula">Ingrese numero de cedula</small>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Ingrese nombre</label>
-                                    <input type="text" class="form-control" placeholder="Escriba su nombre completo"/>
+                                    <input type="text" class="form-control" placeholder="Escriba su nombre completo" formControlName="nombre" />
+                                    <small class="text-danger" *ngIf="nombre">Ingrese nombre</small>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Ingrese correo</label>
-                                    <input type="text" class="form-control" placeholder="Escriba su correo electronico"/>
+                                    <input type="text" class="form-control" placeholder="Escriba su correo electronico" formControlName="email"/>
+                                    <small class="text-danger" *ngIf="email">Ingrese email</small>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Ingrese fecha de cita</label>
-                                    <input type="date" class="form-control" />
+                                    <input type="date" class="form-control" formControlName="fecha"/>
+                                    <small class="text-danger" *ngIf="fecha">Ingrese fecha</small>
                                 </div>
 
 
                                 <div class="form-group">
                                     <label>Seleccione departamento</label>
-                                    <select class="form-control" (change)="valorDepartamento($event)">
+                                    <select class="form-control" (change)="valorDepartamento($event)" formControlName="departamento">
                                         <option>Seleccione el departamento</option>
                                         <option *ngFor="let depart of departamentos; let i = index" [value]="i">{{ depart.departamento
                                         }}</option>
                                     </select>
+                                    <small class="text-danger" *ngIf="departamento">Seleccione departamento</small>
                                 </div>
 
 
                                 <div class="form-group">
                                     <label>Seleccione ciudad</label>
-                                    <select class="form-control" >
+                                    <select class="form-control" formControlName="ciudad">
                                         <option>Seleccione el ciudad</option>
                                         <option *ngFor="let city of ciudades; let i = index" [value]="i">{{ city
                                         }}</option>
                                     </select>
+                                    <small class="text-danger" *ngIf="ciudad">Selecciones la ciudad</small>
                                 </div>
 
 
                                 <div class="form-group">
                                     <label>Ingrese motivo de la cita</label>
-                                    <textarea type="date" class="form-control"> </textarea>
+                                    <textarea type="date" class="form-control" formControlName="mensaje"> </textarea>
+                                    <small class="text-danger" *ngIf="mensaje">Seleccione el motivo de la cita</small>
                                 </div>
+                                
 
-                                <button class="btn btn-primary">Agendar cita</button>
+                                <button class="btn btn-primary" (click)="agendarCitaPersona()">Agendar cita</button>
                             </form>
                         </div>
                     </div>

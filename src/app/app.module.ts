@@ -20,9 +20,14 @@ import { ImpuestoComponent } from './pages/impuesto/impuesto.component'
 
 //importar formularios template
 import { FormsModule } from "@angular/forms";
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { RegistroVehiculoComponent } from './pages/registro-vehiculo/registro-vehiculo.component';
 import { InternaServiciosComponent } from './pages/interna-servicios/interna-servicios.component';
-import { TarifasComponent } from './pages/tarifas/tarifas.component'
+import { TarifasComponent } from './pages/tarifas/tarifas.component';
+import { PasoApasoComponent } from './pages/paso-apaso/paso-apaso.component';
+import { InternaPasoComponent } from './pages/interna-paso/interna-paso.component'
 
 @NgModule({
   declarations: [
@@ -36,13 +41,16 @@ import { TarifasComponent } from './pages/tarifas/tarifas.component'
     ImpuestoComponent,
     RegistroVehiculoComponent,
     InternaServiciosComponent,
-    TarifasComponent
+    TarifasComponent,
+    PasoApasoComponent,
+    InternaPasoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

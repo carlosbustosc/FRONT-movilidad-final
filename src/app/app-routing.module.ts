@@ -11,6 +11,10 @@ import { InternaServiciosComponent } from './pages/interna-servicios/interna-ser
 
 import { TarifasComponent } from './pages/tarifas/tarifas.component';
 
+import { PasoApasoComponent } from './pages/paso-apaso/paso-apaso.component';
+
+import { InternaPasoComponent } from './pages/interna-paso/interna-paso.component';
+
 
 const routes: Routes = [
 
@@ -21,6 +25,8 @@ const routes: Routes = [
   { path:"registroVehiculo", component: RegistroVehiculoComponent },
   { path:"interna", component: InternaServiciosComponent},
   { path:"tarifas", component: TarifasComponent },
+  { path:"pasoApaso", component: PasoApasoComponent },
+  { path:"internaPaso/:id", component: InternaPasoComponent },
   { path:"**", pathMatch:"full", redirectTo:"home" }
  
 ];

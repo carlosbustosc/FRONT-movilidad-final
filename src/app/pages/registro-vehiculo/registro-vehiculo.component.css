@@ -1,9 +1,9 @@
 .fondo_principal_login {
     width: 100%;
-    height: 900px;
+    height: 1032px;
     display: flex;
     align-items: center;
-    background-image:url('https://cdn.autopapo.com.br/box/uploads/2021/03/11185301/3.-toyota-corolla-cross-hybrid-2022.jpg');
+    background-image: url(https://cdn.autopapo.com.br/box/uploads/2021/03/11185301/3.-toyota-corolla-cross-hybrid-2022.jpg);
     background-size: cover;
     background-attachment: fixed;
 }

@@ -1,9 +1,9 @@
 .fondo_principal_login {
     width: 100%;
-    height: 900px;
+    height: 664px;
     display: flex;
     align-items: center;
-    background-image:url('https://bogotacomovamos.org/wp-content/uploads/2019/03/Ciclov%C3%ADa-4-Calle-72-Movilidad-min.jpg');
+    background-image: url(https://bogotacomovamos.org/wp-content/uploads/2019/03/Ciclov%C3%ADa-4-Calle-72-Movilidad-min.jpg);
     background-size: cover;
     background-attachment: fixed;
 }

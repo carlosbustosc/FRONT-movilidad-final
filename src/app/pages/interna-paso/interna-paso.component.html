@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+
+<div class="container contenedor_pasoInterna">
+    <button type="button" class="volver btn btn-success" (click)="volver()">Volver</button>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="contenedor_informacion">
+                <h1 class="titulo">{{ traerSoloUnaTarjeta.titulo }}</h1>
+                <p class="texto_introduccion">{{ traerSoloUnaTarjeta.descripcion }}</p>
+                <img [src]="traerSoloUnaTarjeta.imagen"/>
+                <p class="detalle_foto">Carro con capó abierto mostrando el motor - Foto: Felipe Rocha © Consorcio Circulemos Digital, 2024</p>
+
+                <p class="puntosTexto" *ngFor="let texto of traerSoloUnaTarjeta.texto; let punto = index;">
+                    <span class="detalle_punto"> &#8226; </span>  {{ texto.punto }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

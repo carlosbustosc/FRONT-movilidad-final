@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+
+<div class="container contenedor_principal_paso_a_paso">
+    <button class="volver btn btn-success" (click)="volver()">volver</button>
+    <div class="row bajar_fila">
+        <div class="col-md-4 estilos_columna" *ngFor="let paso of datosPasoApaso; let posicion = index">
+            <div class="contenedor_imagen" [routerLink]="['/internaPaso']" (click)="verContenido( posicion )">
+                <img  class="imagen_tarjeta" src="{{ paso.imagen }}">
+                <h2 class="titulo_tarjeta">{{ paso.titulo }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<app-footer></app-footer>

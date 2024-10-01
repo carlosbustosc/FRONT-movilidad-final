@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///C:/Infolaboral/Desktop/carteleras/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Carteleras</title>
+	<link rel="stylesheet" href="./Carteleras_files/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="./Carteleras_files/style.css">
+</head>
+<body>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<h2 class="titulo_filtro">¿Cuándo quiere ver la obra?</h2>
+				<!--FECHA-->
+				<div class="form-group">
+					<label class="txt_label">Fecha</label>
+					<select class="form-control selectFecha" name="fecha" id="fecha">
+						<option value="" selected="">Seleccione fecha</option>
+						<option value="4 de octubre" class="selectFecha">4 de octubre</option>
+						<option value="5 de octubre" class="selectFecha">5 de octubre</option>
+						<option value="6 de octubre" class="selectFecha">6 de octubre</option>
+						<option value="7 de octubre" class="selectFecha">7 de octubre</option>
+						<option value="8 de octubre" class="selectFecha">8 de octubre</option>
+						<option value="9 de octubre" class="selectFecha">9 de octubre</option>
+						<option value="10 de octubre" class="selectFecha">10 de octubre</option>
+						<option value="11 de octubre" class="selectFecha">11 de octubre</option>
+						<option value="12 de octubre" class="selectFecha">12 de octubre</option>
+
+					</select>
+				</div>
+				<!--HORA-->
+				<div class="form-group">
+					<label class="txt_label">Hora</label>
+					<select class="form-control" name="hora" id="hora">
+						<option value="">Seleccionar hora</option>
+						<option value="3:00 PM" class="remover_option">3:00 PM</option>
+						<option value="5:00 PM" class="remover_option">5:00 PM</option>
+						<option value="6:00 PM" class="remover_option">6:00 PM</option>
+						<option value="7:30 PM" class="remover_option">7:30 PM</option>
+						<option value="8:00 PM" class="remover_option">8:00 PM</option>
+						<option value="8:30 PM" class="remover_option">8:30 PM</option>
+						<option value="8:45 PM" class="remover_option">8:45 PM</option>
+					</select>
+				</div>
+				<!---DURACION--->
+				<div class="form-group">
+					<label class="txt_label">Duracion</label>
+					<select class="form-control" id="duracion">
+						<option value="">seleccione la duración</option>
+						<option value="25&#39; a 35&#39;" class="remover_option">25" a 35"</option>
+						<option value="40&#39; a 50&#39;" class="remover_option">40" a 50"</option>
+						<option value="50&#39; a 60&#39;" class="remover_option">50" a 60"</option>
+						<option value="60&#39; a 70&#39;" class="remover_option">60" a 70"</option>
+						<option value="70&#39; a 90&#39;" class="remover_option">70" a 90"</option>
+						<option value="90&#39; a 120(+)&#39;" class="remover_option">90" a 120(+)"</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h2 class="titulo_filtro">¿Dónde quiere ver la obra?</h2>
+				<!--TIPO DE ESCENARIO--->
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="txt_label">Tipo de escenario</label>
+							<select class="form-control" id="tipoEscenario">
+								<option value="" hidden="">Seleccione Escenario</option>
+								<option value="Sala" class="boleta remover_escenario">Sala</option>
+								<option value="Plaza" class="boleta remover_escenario">Plaza</option>
+								<option value="Calle" class="calle  remover_escenario">Calle</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label class="txt_label">Tipo de entrada</label>
+						<div class="base_botones">
+							<div class="boton1 botonesTipoEntrada " id="Boleta">Boleta</div>
+							<div class="boton2 botonesTipoEntrada" id="Gratis">Gratis</div>
+						</div>
+					</div>
+				</div>
+				<!--LOCALIDAD-->
+				<div class="form-group">
+					<label class="txt_label">Localidad</label>
+					<select class="form-control" id="localidad">
+						<option value="">Seleccionar Localidad</option>
+						<option value="Engativa" class="remover_localidad">Engativa</option>
+						<option value="Suba" class="remover_localidad">Suba</option>
+						<option value="Teusaquillo" class="remover_localidad">Teusaquillo</option>
+						<option value="Santa Fe" class="remover_localidad">Santa Fe</option>
+						<option value="Antonio Nariño" class="remover_localidad">Antonio Nariño</option>
+
+					</select>
+				</div>
+				<!-----ESCENARIO---->
+				<div class="form-group">
+					<div class="form-group">
+						<label class="txt_label">Escenario</label>
+						<select class="form-control" id="escenario">
+							<option value="">Seleccione escenario</option>
+							<option value="Parque de la independencia" class="remover_teatro">Parque de la independencia</option>
+							<option value="Teatro Jorge Eliécer Gaitán" class="remover_teatro">Teatro Jorge Eliécer Gaitán</option>
+							<option value="Plazoleta del obelisco" class="remover_teatro">Plazoleta del obelisco</option>
+							<option value="Teatro la factoría l&#39;explose tino fernández" class="remover_teatro">Teatro la factoría l'explose tino fernández</option>
+							<option value="Compensar plaza de eventos" class="remover_teatro">Compensar plaza de eventos</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<h2 class="titulo_filtro">¿Qué tipo de obra quiere ver?</h2>
+				<!---ORIGEN----->
+				<div class="form-group">
+					<label class="txt_label">Origen</label>
+					<div class="base_botones2">
+						<div class="boton1 btnSinSeleccion btnElegirRegion" id="Nacional">Nacional</div>
+						<div class="boton2 btnSinSeleccion btnInterSinSeleccion btnElegirRegion" id="Internacional">Internacional</div>
+					</div>
+				</div>
+				<!----PAIS / REGION---->
+				<div class="form-group">
+					<label class="txt_label">Pais/Región</label>
+					<select class="form-control" id="pais">
+						
+					
+						<option value="" hidden="">Seleccione pais/región</option>
+
+						
+					</select>
+				</div>
+				<!---CLASIFICACIÓN--->
+				<div class="form-group">
+					<label class="txt_label">Clasificación</label>
+					<div class="contenedor_clasificaciones">
+						<div class="base_circulos">
+							<div class="boton_claificacion" id="General">
+								<p class="letra_categoria">A</p>
+							</div>
+							<p class="text-clasificacion">General</p>
+						</div>
+						<div class="base_circulos">
+							<div class="boton_claificacion" id="13 - 15 años">
+								<p class="letra_categoria">B</p>
+							</div>
+							<p class="text-clasificacion">13-15 años</p>
+						</div>
+						<div class="base_circulos">
+							<div class="boton_claificacion" id="16 - 20 años">
+								<p class="letra_categoria">B+</p>
+							</div>
+							<p class="text-clasificacion">16-20 años</p>
+						</div>
+						<div class="base_circulos">
+							<div class="boton_claificacion" id="Adultos">
+								<p class="letra_categoria">C</p>
+							</div>
+							<p class="text-clasificacion">Adultos</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--BOTON BUSCAR-->
+		<div class="row">
+			<div class="col-md-12">
+				<button type="button" class="btn btn-primary alinear_derecha" id="buscar">Realizar búsqueda</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="./Carteleras_files/jquery.min.js.descarga"></script>
+	<script type="text/javascript" src="./Carteleras_files/funcion.js.descarga"></script>
+
+</body></html>
