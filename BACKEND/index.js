@@ -19,7 +19,13 @@ usarExpress.use( cors() );
 
 //--importamos las rutas---//
 const rutaUsuarios = require('./rutas/usuario');
+const rutaAgendarCita = require('./rutas/agendarCita');
+const rutasRegistarVehiculo = require('./rutas/registrarVehiculo');
+
+
 usarExpress.use( rutaUsuarios );
+usarExpress.use( rutaAgendarCita );
+usarExpress.use( rutasRegistarVehiculo )
 
 
 

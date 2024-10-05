@@ -3,9 +3,8 @@ const jwt    = require('jwt-simple');
 const moment = require('moment');
 
 
+const claveSecreta = "Ecoutores09";
 
-
-const claveSecreta = "Ecoutores09"
 
 const tokenUsuarios = ( respUnRegistro ) => {
 

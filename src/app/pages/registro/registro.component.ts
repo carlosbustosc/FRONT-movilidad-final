@@ -209,9 +209,20 @@ export class RegistroComponent implements OnInit {
 
 
   registrarUsuario(){
+    
+    //----contraseñas----//
+    let pass1 = this.formularioRegistro.controls['pass'].value;
+    let pass2 = this.formularioRegistro.controls['pass2'].value;
+  
+    
+    //------cedula-------//
+    let numDocumento1 = this.formularioRegistro.controls['numeroCedula'].value;
+    let numDocumento2 = this.formularioRegistro.controls['numCedula'].value;
+  
 
-    console.log( this.formularioRegistro )
 
+    
+    // si el formulario esta vacio
     if( this.formularioRegistro.invalid ){
   
       Object.values( this.formularioRegistro.controls ).forEach( campos => {
@@ -220,13 +231,41 @@ export class RegistroComponent implements OnInit {
 
       })
 
-    }else{
-        
-      //console.log( this.formularioRegistro.value );
-      this.conectarServicio.registrarUsuario( this.formularioRegistro.value )  
+    }
+    
+    else if( pass1 != pass2 ){
+      
+      console.log("las contraseñas no son iguales");
+    }
 
+    else if( numDocumento1 != numDocumento2){
+
+      console.log("las cedulas son diferentes");
+    }
+    
+    
+    
+  
+    
+    
+    else{
+          
+      console.log( this.formularioRegistro.value );
+      this.conectarServicio.registrarUsuario( this.formularioRegistro.value )
+          .subscribe( (resp:any) => {
+
+            console.log(resp)
+            alert("Se ha registrado correctamente")
+
+          }, ( error => {
+            
+              console.log(error.error.mensaje);
+
+              if(error.error.mensaje){
+                alert(" el usuario ya existe")
+              }
+          }))  
+        
     }
   }
-
-
 }

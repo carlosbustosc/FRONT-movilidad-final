@@ -2,12 +2,18 @@
 
 .fondo_principal_login {
     width: 100%;
-    height: 695px;
+    height: 828px;
     display: flex;
     align-items: center;
-    background-image:url('https://blog.mazda.com.ec/hubfs/MAZDA/Blog/Im%C3%A1genes/5%20consejos%20para%20cuidar%20la%20pintura%20de%20tu%20veh%C3%ADculo/Mazda%20Ecuador%20-%20pintura.png');
+    background-image: url('https://blog.mazda.com.ec/hubfs/MAZDA/Blog/Im%C3%A1genes/5%20consejos%20para%20cuidar%20la%20pintura%20de%20tu%20veh%C3%ADculo/Mazda%20Ecuador%20-%20pintura.png');
     background-size: 100%;
     background-attachment: fixed;
+}
+
+.linea_separadora {
+    border-top: 1px solid #6148a38c;
+    margin-top: 12px;
+    text-align: center;
 }
 
 .titulo_impuesto {
@@ -32,13 +38,14 @@
 }
 
 .precio_del_vehiculo {
+
     font-size: 19px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     margin-bottom: 25px;
     color: #ffffff;
     margin-top: 0px;
-    background-color: #6148a3;
+    background-color: #312424;
     display: inline-block;
     padding: 2px 17px;
     border-radius: 20px;

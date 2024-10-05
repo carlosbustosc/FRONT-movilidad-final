@@ -10,6 +10,8 @@ const usuarios = require('../controladores/usuarios');
 //creamos la ruta
 usarRuta.post('/registarUsuario', usuarios.registrarUsuario );
 usarRuta.post('/loginUsuarios', usuarios.loginUsuarios );
+usarRuta.post('/unUsuario', usuarios.listarUsuarios );
+usarRuta.put('/actualizarUsuario', usuarios.ActulizarUsuario );
 
 
 

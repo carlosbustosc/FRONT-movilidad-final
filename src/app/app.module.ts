@@ -29,6 +29,9 @@ import { TarifasComponent } from './pages/tarifas/tarifas.component';
 import { PasoApasoComponent } from './pages/paso-apaso/paso-apaso.component';
 import { InternaPasoComponent } from './pages/interna-paso/interna-paso.component'
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,

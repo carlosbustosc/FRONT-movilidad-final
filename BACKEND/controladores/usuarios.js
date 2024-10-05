@@ -12,13 +12,9 @@ const bcrypt = require('bcrypt');
 const Token = require('../token/TokenUsuario')
 
 
-
-
 const registrarUsuario = (req, resp) => {
-
   
-    const datosFront = req.body;
-
+ const datosFront = req.body;
 
 try{
     //validar campos
@@ -105,6 +101,74 @@ try{
 }
 
 
+const ActulizarUsuario = (req, resp) => {
+
+    const datosFront = req.body;
+    console.log(datosFront)
+
+
+    try{
+
+        let tipoDocumento   = validator.isEmpty( datosFront.tipoDocumento );
+        let numeroCedula    = validator.isEmpty( datosFront.numeroCedula );
+        let fecha           = validator.isEmpty( datosFront.fecha );
+        let nombre          = validator.isEmpty( datosFront.nombre );
+        let genero          = validator.isEmpty( datosFront.genero );
+        let correo          = validator.isEmpty( datosFront.correo );
+        let pass            = validator.isEmpty( datosFront.pass );
+        let fechaExpedicion = validator.isEmpty( datosFront.fechaExpedicion );
+        let apellido        = validator.isEmpty( datosFront.apellido );
+        let RH              = validator.isEmpty( datosFront.RH );
+        let grupoSanguineo  = validator.isEmpty( datosFront.grupoSanguineo );
+        let departamento    = validator.isEmpty( datosFront.departamento );
+        let ciudad          = validator.isEmpty( datosFront.ciudad );
+
+
+        if(tipoDocumento || numeroCedula || fecha || nombre || genero || correo || pass || fechaExpedicion || apellido || RH || grupoSanguineo || departamento || ciudad){
+
+            return resp.status(400).json({
+                status:"error",
+                mensaje:"Falta alguno de los campos"
+            })
+        }
+
+    }catch(error){
+
+        return resp.status(400).json({
+            status:"error",
+            mensaje:"Algun dato nunca llego"
+        })
+    }
+
+
+    modeloUsuarios.findOneAndUpdate( { numeroCedula : datosFront.numeroCedula }, datosFront )
+            .then( respActualizacion => {
+                
+                if(!respActualizacion){
+
+                    return resp.status(400).json({
+                        error:"error",
+                        mensaje:"No se encontro el registro"
+                    })
+                }
+
+                return resp.status(200).json({
+                    status:"sucess",
+                    mensaje:"Se ha actualizado correctamente"
+                })
+                
+            }).catch( error => {
+              
+                return resp.status(400).json({
+                    status:"error",
+                    mensaje:error
+                })
+            })
+  
+
+}
+
+
 
 const loginUsuarios = (req, resp) => {
 
@@ -114,7 +178,7 @@ const loginUsuarios = (req, resp) => {
     try{
 
         let numDocumento = validator.isEmpty( datosFront.numDocumento );
-        let pass = validator.isEmpty( datosFront.pass );
+        let pass         = validator.isEmpty( datosFront.pass );
 
         if( numDocumento || pass ){
 
@@ -171,10 +235,57 @@ const loginUsuarios = (req, resp) => {
 }
 
 
+const listarUsuarios = (req, resp) => {
+
+    const datosFront = req.body;
+   
+    try{
+
+        let documento = validator.isEmpty( datosFront.NumCedula );
+        
+        if( documento ){
+
+            resp.status(400).json({
+                error:"error",
+                mensaje:"El campo viene vacio"
+            })
+        }
+
+    }catch(error){
+
+        resp.status(400).json({
+            mensaje:"no viene ningun dato"
+        })
+    }
+
+
+
+    modeloUsuarios.findOne( { numeroCedula:datosFront.NumCedula } )
+            .then( respUsuario => {
+                 if( !respUsuario ){
+                    
+                        return resp.status(400).json({
+                            status:"error",
+                            mensaje:"No hay ningun registro con ese documento"
+                        })
+                 }
+
+
+                 return resp.status(200).json({
+                    status:"success",
+                    mensaje:"Se encontro el usuario",
+                    respUsuario
+                 })
+            })
+
+}
+
 
 
 module.exports = {
 
     registrarUsuario,
-    loginUsuarios
+    loginUsuarios,
+    listarUsuarios,
+    ActulizarUsuario
 }

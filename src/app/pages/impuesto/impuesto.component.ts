@@ -29,6 +29,7 @@ export class ImpuestoComponent implements OnInit  {
 
   btnPlaca = true;
   
+  placa:any;
 
 
   selectedMarca:any = null;
@@ -93,33 +94,39 @@ export class ImpuestoComponent implements OnInit  {
 
       const ingresarAinput = evento.target as HTMLInputElement;
       const valorAuto = ingresarAinput.value;
+
+      console.log(valorAuto)
         
       const entero = parseInt(valorAuto, 10);
-      
-   
-      
-  
-      if( (entero > 0) && (entero <=  54057000) ){
+
+      this.calcular( entero )
+           
+  }
+
+
+  calcular(entero:any){
+    if( (entero > 0) && (entero <=  54057000) ){
          
-        let total = entero * 0.015
-        this.precioImpuesto = total.toLocaleString('es-ES');
-       
-      }
+      let total = entero * 0.015
+      this.precioImpuesto = total.toLocaleString('es-ES');
 
-      else if( (entero >  54057000) && (entero < 121625000) ){
-        
-        let total = entero * 0.025
-        this.precioImpuesto = total.toLocaleString('es-ES')
+      console.log(this.precioImpuesto)
+     
+    }
 
-      }
-
-      else if(entero >  121625000 ){
-          
-        let total = entero * 0.035
-        this.precioImpuesto = total.toLocaleString('es-ES')
+    else if( (entero >  54057000) && (entero < 121625000) ){
       
-      }
-          
+      let total = entero * 0.025
+      this.precioImpuesto = total.toLocaleString('es-ES')
+
+    }
+
+    else if(entero >  121625000 ){
+        
+      let total = entero * 0.035
+      this.precioImpuesto = total.toLocaleString('es-ES')
+    
+    }
   }
     
   
@@ -157,7 +164,8 @@ export class ImpuestoComponent implements OnInit  {
     this.selectedMarca = null; // Reinicia el valor del select marca
     this.depatamentoInicial = null // Reiniciar valor departamento
     this.resetiarPrecio = ""
-
+  
+    this.placa = ""
   }
 
   volver(){
@@ -166,8 +174,31 @@ export class ImpuestoComponent implements OnInit  {
     
   }
 
-  consultarPlaca(){
 
+
+
+
+  consultarPorPlaca(){
+    
+    this.conectarServicio.consultarPlaca( this.placa )
+      .subscribe(  ( resp:any )  => {
+        console.log(resp);
+        
+        //ejecutar precio funcion impuesto
+        this.calcular( resp.resultadoDB.precio );
+        this.btnImpuesto = false;
+        this.mostrarResultadoImpuesto = true;
+        
+
+        this.marcaSelec = resp.resultadoDB.marcaVehiculo + " " + resp.resultadoDB.modeloVechiculo
+        
+        
+      
+      }, (error => {
+        
+        alert(error.error.mensaje);
+
+      }))
     //servicio de consulta
   }
 

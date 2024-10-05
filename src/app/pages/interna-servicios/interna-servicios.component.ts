@@ -7,6 +7,7 @@ import { MovilidadService } from '../../servicios/movilidad.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 
 
+
 @Component({
 
   selector: 'app-interna-servicios',
@@ -27,23 +28,39 @@ export class InternaServiciosComponent implements OnInit{
   ciudades:any= [];
   
 
+  datosDeUsuarioLogueado:any = []
+
+  nombreBienvenida:any =""
+
+  txtVehiculo ="Por defecto"
+  vehiculosEncontrados:any[] = []
+
   //-----formulario-----//
   agendamientoCita:FormGroup
+  formPerfil:FormGroup
 
   constructor( private conectarServicios:MovilidadService, private fb:FormBuilder ){
     
+  
+ 
+   //----formulario de agendamiento-----//
    this.agendamientoCita = this.fb.group({
 
-    numCedula    : ["", Validators.required ],
-    nombre       : ["", Validators.required ],
-    email        : ["", Validators.required ],
+    numCedula    : [ localStorage.getItem('cedula'), Validators.required ],
+    nombre       : [ localStorage.getItem('nombre'), Validators.required ],
+    email        : [ localStorage.getItem('correo'), Validators.required ],
     fecha        : ["", Validators.required ],
     departamento : ["", Validators.required ],
     ciudad       : ["", Validators.required ],
     mensaje      : ["", Validators.required ]
 
    })
-  
+   
+   //---inicializar formulario peril----/
+   this.formPerfil = this.fb.group({
+
+   })
+
 }
 
 
@@ -89,7 +106,77 @@ export class InternaServiciosComponent implements OnInit{
 
 
   ngOnInit(): void {
+      
+    this.nombreBienvenida = localStorage.getItem('nombre');
+    const cedula = localStorage.getItem('cedula');
     
+    //--cargar datos del perfil---//
+    this.conectarServicios.cargarPerfil(cedula)    
+      .subscribe( (resp:any) => {
+
+         // console.log(resp);
+          this.datosDeUsuarioLogueado = resp;
+          //---formulario cargue perfil----//
+          this.formPerfil = this.fb.group({
+      
+            tipoDocumento: [ resp.respUsuario.tipoDocumento, Validators.required ],
+            numeroCedula: [ resp.respUsuario.numeroCedula, Validators.required ],
+            fecha: [ resp.respUsuario.fecha, Validators.required ],
+            nombre: [ resp.respUsuario.nombre, Validators.required ],
+            genero: [ resp.respUsuario.genero, Validators.required ],
+            correo: [ resp.respUsuario.correo, Validators.required ],
+            pass: [ resp.respUsuario.pass, Validators.required ],
+            fechaExpedicion: [ resp.respUsuario.fechaExpedicion, Validators.required ],
+            apellido: [ resp.respUsuario.apellido, Validators.required ],
+            RH: [ resp.respUsuario.RH, Validators.required ],
+            grupoSanguineo: [ resp.respUsuario.grupoSanguineo, Validators.required ],
+            departamento: [ resp.respUsuario.departamento, Validators.required ],
+            ciudad: [ resp.respUsuario.ciudad, Validators.required ]
+      
+          })
+        
+         this.ciudades = this.departamentos[resp.respUsuario.departamento].ciudades;
+         
+         //console.log(this.ciudades)
+     
+
+        }, (error => {
+
+        console.log(error);
+
+      }))
+      
+
+    //----cargar datos del vahiculo----//
+    this.conectarServicios.cargarDatosVehiculo( cedula )
+         .subscribe( (resp:any) => {
+        
+          this.txtVehiculo = resp.mensaje
+
+              console.log(resp.respVehiculo)
+
+              if( typeof resp.respVehiculo === 'object' && resp.respVehiculo !== null 
+                && !Array.isArray(resp.respVehiculo) ){
+             
+                  const vehiculos = []
+                  vehiculos.push(resp.respVehiculo)
+                  
+                  this.vehiculosEncontrados = vehiculos;
+                  console.log(this.vehiculosEncontrados)
+            
+            }else{
+    
+              this.vehiculosEncontrados = resp.respVehiculo
+            }
+         
+        }, (error => {
+
+          console.log(error);
+         }))
+
+
+
+    //-----cargar departamentos para el combo---//
      this.conectarServicios.getDepartamentos()
        .subscribe( resp => {
           
@@ -107,6 +194,8 @@ export class InternaServiciosComponent implements OnInit{
   this.pantallaPerfil = true;
   this.pantallaCita = false;
   this.pantallaMiVehiculo = false;
+  
+  
 
   }
 
@@ -163,7 +252,7 @@ export class InternaServiciosComponent implements OnInit{
 
   //--------Agendar Cita---------//
   agendarCitaPersona(){
-      
+   
     console.log(this.agendamientoCita)
       if( this.agendamientoCita.invalid ){
 
@@ -174,10 +263,63 @@ export class InternaServiciosComponent implements OnInit{
         })
 
       }else{
+        
 
         this.conectarServicios.AgendarCita( this.agendamientoCita.value )
-      
+            .subscribe( resp => {
+              console.log( resp );
+
+              alert("La cita se ha registrado correctamente");
+
+             //----Resetiar campos formulario de agendamiento-----//
+             this.agendamientoCita = this.fb.group({
+          
+              numCedula    : [ localStorage.getItem('cedula'), Validators.required ],
+              nombre       : [ localStorage.getItem('nombre'), Validators.required ],
+              email        : [ localStorage.getItem('correo'), Validators.required ],
+              fecha        : ["", Validators.required ],
+              departamento : ["", Validators.required ],
+              ciudad       : ["", Validators.required ],
+              mensaje      : ["", Validators.required ]
+          
+             })
+             
+
+            }, (error => {
+
+            
+              alert(error.error.mensaje)
+            
+            }))
+    
       }
+  }
+
+
+
+  actualizarUsuario(){
+  
+    if(this.formPerfil.invalid){
+
+      alert("el formulario debe estar lleno para actualizar la informacion");
+    }else{
+
+      console.log( this.formPerfil.value );
+
+      this.conectarServicios.actualizarUsuario( this.formPerfil.value )
+          .subscribe( resp => {
+            console.log(resp);
+
+            alert("Su perfil se ha actualizado correctamente");
+
+
+          }, (error => {
+
+            alert(error.error.mensaje)   
+            console.log(error)
+          }))
+    }
+
   }
 
 }

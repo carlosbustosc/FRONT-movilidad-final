@@ -16,6 +16,10 @@ import {  Validators } from '@angular/forms'
 import { MovilidadService } from 'src/app/servicios/movilidad.service';
 
 
+//---importar Router----//
+import { Router } from "@angular/router"
+
+
 
 @Component({
   selector: 'app-login',
@@ -26,7 +30,7 @@ export class LoginComponent {
   
   datosLogin:FormGroup
 
-  constructor( private location: Location, private fb:FormBuilder, private conectarServicio:MovilidadService ){
+  constructor( private location: Location, private fb:FormBuilder, private conectarServicio:MovilidadService, private usarRuta: Router ){
     
     this.datosLogin = this.fb.group({
   
@@ -69,6 +73,35 @@ export class LoginComponent {
       //console.log( this.datosLogin.value )
 
       this.conectarServicio.loginUsuario( this.datosLogin.value )
+          .subscribe(resp => {
+
+            console.log(resp);
+
+            //ingreso a la interna
+        
+            localStorage.setItem('cedula', resp.respUnRegistro.numeroCedula );
+            localStorage.setItem('nombre', resp.respUnRegistro.nombre);
+            localStorage.setItem('correo', resp.respUnRegistro.correo);
+
+
+            this.usarRuta.navigate(['/interna']);
+          
+          }, (error) => {
+
+            console.log(error.error.mensaje);
+            
+            if(error.error.mensaje == "No existe el usuario con este documento"){
+
+              alert("El usuario no existe")
+            }
+
+            if(error.error.mensaje == "la contraseña no es correcta"){
+
+              alert("la contraseña es incorrecta");
+            
+            }
+          
+          })
 
     }
 

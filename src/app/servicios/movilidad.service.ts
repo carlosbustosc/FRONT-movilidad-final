@@ -4,17 +4,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
 
 //importamos operador map
-import { map } from "rxjs/operators"
+import { map } from "rxjs/operators";
 
 //importar interface
 import { tarifasInterface, interfaceVehiculos, registroUsuario, Login, registroVehiculo, agendarCita } from '../modelos/vehiculos.interface';
 import { seccionesInterface } from '../modelos/secciones.interface';
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class MovilidadService {
   
+  guardarToken:any = ""
 
   secciones:seccionesInterface[] = [
     {
@@ -1284,7 +1290,11 @@ export class MovilidadService {
     }
   ]
 
-  constructor( private usarHttp: HttpClient) { }
+  constructor( private usarHttp: HttpClient) { 
+
+    this.leerTokenAlCargar();
+
+  }
   
 
 
@@ -1331,9 +1341,7 @@ export class MovilidadService {
       nombre        :  formularioRegistro.nombre,    
       genero        :  formularioRegistro.genero,      
       correo        :  formularioRegistro.correo,    
-      pass          :  formularioRegistro.pass,       
-      pass2         :  formularioRegistro.pass2,         
-      numCedula     :  formularioRegistro.numCedula,      
+      pass          :  formularioRegistro.pass,         
       fechaExpedicion: formularioRegistro.fechaExpedicion,
       apellido      :  formularioRegistro.apellido,       
       RH            :  formularioRegistro.RH,          
@@ -1342,13 +1350,44 @@ export class MovilidadService {
       ciudad        :  formularioRegistro.ciudad  
     }
       
-    console.log( datosRegistro);
+    return this.usarHttp.post('http://localhost:3000/registarUsuario', datosRegistro)
 
   }
+  
 
 
+  actualizarUsuario( formularioActualzar:registroUsuario  ){
+        
+    
+    
+    const datosActualizar = {
 
-  //--------LOGIN USUARIO-------//
+      tipoDocumento :  formularioActualzar.tipoDocumento,
+      numeroCedula  :  formularioActualzar.numeroCedula,
+      fecha         :  formularioActualzar.fecha,      
+      nombre        :  formularioActualzar.nombre,    
+      genero        :  formularioActualzar.genero,      
+      correo        :  formularioActualzar.correo,    
+      pass          :  formularioActualzar.pass,         
+      fechaExpedicion: formularioActualzar.fechaExpedicion,
+      apellido      :  formularioActualzar.apellido,       
+      RH            :  formularioActualzar.RH,          
+      grupoSanguineo:  formularioActualzar.grupoSanguineo,
+      departamento  :  formularioActualzar.departamento, 
+      ciudad        :  formularioActualzar.ciudad  
+    }
+
+
+    console.log(datosActualizar)
+
+    return this.usarHttp.put('http://localhost:3000/actualizarUsuario', datosActualizar );
+    
+    
+  }
+
+  
+
+  //--------------LOGIN USUARIO------------//
   loginUsuario( login:Login){
     
     const datosLogin = {
@@ -1357,10 +1396,54 @@ export class MovilidadService {
       pass: login.pass
 
     }
+  
 
-    console.log(datosLogin);
+    return this.usarHttp.post('http://localhost:3000/loginUsuarios', datosLogin)
+            .pipe(
+              map( (resp:any) => {
+      
+                   
+                  this.guardarTokenStorage( resp.generarToken )
+                  return resp;
+              })
+       
+          )
 
   }
+
+  
+  guardarTokenStorage(TokenCodigo:any) {
+      
+    localStorage.setItem('Token', TokenCodigo);
+
+  }
+  
+  
+  leerTokenAlCargar(){
+    
+    if( localStorage.getItem('Token') ){
+        
+      this.guardarToken = localStorage.getItem('Token');
+      
+    }else{
+
+      this.guardarToken = ""
+    }
+    
+  }
+
+
+
+  validarIngreso(){
+
+   return this.guardarToken.length > 0
+
+  }
+ //-----------------FIN LOGIN USUARIO---------------//
+  
+
+
+
 
 
   //-----registrar vehiculo------//
@@ -1382,6 +1465,23 @@ export class MovilidadService {
 
   }
 
+  
+  //-----cargar datos de perfil------//
+  cargarPerfil(cedula:any){
+  
+
+
+    const documento = {
+       
+      NumCedula: cedula
+    
+    }
+   
+
+    return this.usarHttp.post('http://localhost:3000/unUsuario', documento);
+
+  }
+
 
   //-------Agendar cita--------//
   AgendarCita( datosAgendamiento:agendarCita ){
@@ -1399,10 +1499,39 @@ export class MovilidadService {
 
       }
 
-      console.log( datosAgendarCita );
+      return this.usarHttp.post('http://localhost:3000/agendarCita', datosAgendarCita);
   
     }
+  
 
+  //------cargar datos de vehiculo--------//
+  cargarDatosVehiculo(cedula:any){
+    
+    console.log(cedula);
+
+    const documento = {
+      documento:cedula
+    }
+    
+
+    return this.usarHttp.post('http://localhost:3000/traerUnVehiculo', documento);
+
+
+  }
+
+
+  //-----consultar por placa------//
+  consultarPlaca(placa:any){
+    
+    const placaAuto = {
+
+      matricula : placa
+    }
+
+    return this.usarHttp.post('http://localhost:3000/mostrarUnVehiculo', placaAuto)
+            
+  }
+  
 }
 
 

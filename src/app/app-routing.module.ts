@@ -16,6 +16,10 @@ import { PasoApasoComponent } from './pages/paso-apaso/paso-apaso.component';
 import { InternaPasoComponent } from './pages/interna-paso/interna-paso.component';
 
 
+//------importar guard----------//
+import { seguridadGuard } from './guard/seguridad.guard';
+
+
 const routes: Routes = [
 
   { path:"home", component: HomeComponent },
@@ -23,7 +27,7 @@ const routes: Routes = [
   { path:"login", component: LoginComponent },
   { path:"impuesto", component: ImpuestoComponent },
   { path:"registroVehiculo", component: RegistroVehiculoComponent },
-  { path:"interna", component: InternaServiciosComponent},
+  { path:"interna", component: InternaServiciosComponent, canActivate:[seguridadGuard] },
   { path:"tarifas", component: TarifasComponent },
   { path:"pasoApaso", component: PasoApasoComponent },
   { path:"internaPaso/:id", component: InternaPasoComponent },
