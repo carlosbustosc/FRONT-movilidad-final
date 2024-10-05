@@ -41,5 +41,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Ignorar la carpeta BACKEND
-/BACKEND/
+
+
