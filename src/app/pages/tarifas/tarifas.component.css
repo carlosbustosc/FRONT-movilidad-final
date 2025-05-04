@@ -12,6 +12,7 @@ th {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     color: #0b1276;
+    font-weight: 400;
 }
 
 td {
@@ -20,10 +21,11 @@ td {
 }
 
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
-    padding: 20px 0px;
+    padding: 14px 0px;
     line-height: 1.428571429;
-    vertical-align: top;
+    vertical-align: middle;
     border-top: 1px solid #20223e;
+    text-align: center;
 }
 
 .container.tarifas {

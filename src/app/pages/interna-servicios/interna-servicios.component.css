@@ -1,11 +1,20 @@
 
 
+
+
 .ancho_de_menu {
     max-width: 400px;
     height: 98vh;
     background-color: #171934;
     padding: 20px 40px;
     border-right: 2px solid #640081;
+   
+}
+
+.ajustar_scroll{
+
+    height: 90vh;
+    overflow-y: scroll;
 }
 
 .logo_interna {

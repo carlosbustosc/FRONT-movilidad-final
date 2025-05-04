@@ -116,11 +116,14 @@ export class InternaServiciosComponent implements OnInit{
     this.nombreBienvenida = localStorage.getItem('nombre');
     const cedula = localStorage.getItem('cedula');
     
+
+    
     //--cargar datos del perfil---//
     this.conectarServicios.cargarPerfil(cedula)    
       .subscribe( (resp:any) => {
-
-         //console.log(resp);
+  
+          
+         console.log(resp);
           this.datosDeUsuarioLogueado = resp;
           //---formulario cargue perfil----//
           this.formPerfil = this.fb.group({
@@ -202,17 +205,38 @@ export class InternaServiciosComponent implements OnInit{
       
 
   }
-  
+
+
+
   cerrarSesion(){
+
+    //interactuar DOM
+    let body = document.querySelector("body");
+    if(body){
+      body.style.overflowY = "scroll "
+    }
+    //interactuar DOM
   
       this.conectarServicios.cerrarSesion()
-
       this.usarRuta.navigate( ['/login'] )
     
   }
 
+  ajustarScroll(){
+    //interactuar DOM
+    let body = document.querySelector("body");
+    if(body){
+      body.style.overflowY = "hidden";
+    }
+    //interactuar DOM
+  }
+
+
   miPerfil(){
   
+  this.ajustarScroll();
+
+
   //pantallas
   this.pantallaBienvenida = false;
   this.pantallaPerfil = true;
@@ -225,7 +249,9 @@ export class InternaServiciosComponent implements OnInit{
 
   agendarCita(){
   
-    //pantallas
+  this.ajustarScroll();
+
+  //pantallas
   this.pantallaBienvenida = false;
   this.pantallaPerfil = false;
   this.pantallaCita = true;
@@ -234,8 +260,9 @@ export class InternaServiciosComponent implements OnInit{
   }
 
   miVehiculo(){
-  
-     //pantallas
+   
+    this.ajustarScroll();
+  //pantallas
   this.pantallaBienvenida = false;
   this.pantallaPerfil = false;
   this.pantallaCita = false;

@@ -5,7 +5,7 @@
         <div class="col-md-3 ancho_de_menu">
             <img src="./assets/img/logo-pmss2.png" class="logo_menu">
 
-            <li class="boton_interna" (click)="miPerfil()">Mi perfil</li>
+            <li class="boton_interna btnPerfil" (click)="miPerfil()">Mi perfil</li>
             <li class="boton_interna" (click)="agendarCita()">Agendar cita</li>
             <li class="boton_interna" (click)="miVehiculo()">Mi vehiculo</li>
 
@@ -25,7 +25,7 @@
             <!--bienvenida-->
             <div class="base_interna_principal" *ngIf="pantallaBienvenida">
                 <div class="base_bienvenida">
-                    <h1 class="nombre_bienvenida">Hola {{ nombreBienvenida }}</h1>
+                    <h1 class="nombre_bienvenida">Hola {{ nombreBienvenida }} Bienvenido a tu perfil</h1>
                     <p class="texto_bienvenida">Aquí podrás gestionar y hacer seguimiento a los trámites y servicios de tránsito y transporte que realices en la ciudad de Bogotá.</p>
                     <img src="https://vus.circulemosdigital.com.co/assets/svg/usuario-mesa-trabajo.svg" class="imagen_bienvenida"/>
                 </div>
@@ -146,26 +146,26 @@
             <!---agendar cita--->
             <div class="contenedor_agendar_cita" *ngIf="pantallaCita">
                 <div class="container"> 
-                    <div class="row">
+                    <div class="row ajustar_scroll">
                         <div class="col-md-12">
                             <form class="ancho_formulario" [formGroup]="agendamientoCita">
                                 <img _ngcontent-ng-c4235106435="" src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_interna">
                                 
                                 <div class="form-group">
                                     <label>Ingrese cedula</label>
-                                    <input type="text" class="form-control" placeholder="Escriba su cedula de ciudadania" formControlName="numCedula"/>
+                                    <input type="text" class="form-control" placeholder="Escriba su cedula de ciudadania" formControlName="numCedula" readonly/>
                                     <small class="text-danger" *ngIf="numCedula">Ingrese numero de cedula</small>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Ingrese nombre</label>
-                                    <input type="text" class="form-control" placeholder="Escriba su nombre completo" formControlName="nombre" />
+                                    <input type="text" class="form-control" placeholder="Escriba su nombre completo" formControlName="nombre" readonly/>
                                     <small class="text-danger" *ngIf="nombre">Ingrese nombre</small>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Ingrese correo</label>
-                                    <input type="text" class="form-control" placeholder="Escriba su correo electronico" formControlName="email"/>
+                                    <input type="text" class="form-control" placeholder="Escriba su correo electronico" formControlName="email" readonly/>
                                     <small class="text-danger" *ngIf="email">Ingrese email</small>
                                 </div>
 
@@ -215,7 +215,7 @@
 
             <!--mi vehiculo-->
             
-            <div class="container" *ngIf="pantallaMiVehiculo">
+            <div class="container ajustar_scroll" *ngIf="pantallaMiVehiculo">
                 
 
                 <div class="row ancho_fila">

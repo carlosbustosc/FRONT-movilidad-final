@@ -19,7 +19,8 @@
 .titulo_impuesto {
     font-size: 20px;
     color: #6148a3;
-    margin-bottom:0px;
+    margin-bottom: 0px;
+    margin-top: 15px;
 }
 
 .departamento_impuesto {

@@ -72,8 +72,14 @@ export class LoginComponent {
         
       //console.log( this.datosLogin.value )
 
+
+
+
+
       this.conectarServicio.loginUsuario( this.datosLogin.value )
           .subscribe(resp => {
+  
+       
 
             console.log(resp);
 
@@ -81,9 +87,13 @@ export class LoginComponent {
             localStorage.setItem('cedula', resp.respUnRegistro.numeroCedula );
             localStorage.setItem('nombre', resp.respUnRegistro.nombre);
             localStorage.setItem('correo', resp.respUnRegistro.correo);
+  
 
+            setTimeout( () => {
+                this.usarRuta.navigate(['/interna']);
+            }, 2000)
+           
 
-            this.usarRuta.navigate(['/interna']);
           
           }, (error) => {
 
