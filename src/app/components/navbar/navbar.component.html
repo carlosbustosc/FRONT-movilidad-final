@@ -13,7 +13,9 @@
                 <li [routerLink]="['/pasoApaso']">Paso a paso</li>
                 <li [routerLink]="['/tarifas']">Tarifas</li>
 
-                <li class="boton_ingresar" [routerLink]="['/login']">LOGIN</li>
+                <li class="boton_ingresar" [routerLink]="['/login']" *ngIf="botonLogin">LOGIN</li>
+                <li class="boton_ingresar" [routerLink]="['/interna']" *ngIf="botonPerfil">Ir a mi perfil</li>
+
             </div>
         </div>
     </div>

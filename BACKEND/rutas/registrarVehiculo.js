@@ -11,7 +11,7 @@ const controladorRegistroVehiculo = require('../controladores/registrarVehiculo'
 
 
 //crear rutas
-usarRuta.post('/registrarVehiculo', controladorRegistroVehiculo.registrarVehiculo );
+usarRuta.post('/registrarVehiculos', controladorRegistroVehiculo.registrarVehiculo );
 usarRuta.post('/traerUnVehiculo', controladorRegistroVehiculo.listarVehiculo );
 usarRuta.post('/mostrarUnVehiculo', controladorRegistroVehiculo.mostrarUnVehiculo );
 

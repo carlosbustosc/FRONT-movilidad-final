@@ -181,7 +181,8 @@ export class ImpuestoComponent implements OnInit  {
   consultarPorPlaca(){
     
     this.conectarServicio.consultarPlaca( this.placa )
-      .subscribe(  ( resp:any )  => {
+      
+    .subscribe(  ( resp:any )  => {
         console.log(resp);
         
         //ejecutar precio funcion impuesto

@@ -21,10 +21,9 @@
 
 <!--servicios-->
 <div class="container contenedor_servicios">
+    <h2 class="titulo_intermedio"> SERVICIOS</h2>
     <div class="row">
-
-        <h2 class="titulo_intermedio"> SERVICIOS</h2>
-        <app-tarjeta [seccionHijo]="seccion" *ngFor="let seccion of secciones; let i = index"></app-tarjeta>
+        <app-tarjeta class="col-md-4" [seccionHijo]="seccion" *ngFor="let seccion of secciones; let i = index"></app-tarjeta>
 
     </div>
 </div>

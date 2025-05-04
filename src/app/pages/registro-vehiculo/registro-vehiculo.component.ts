@@ -108,6 +108,11 @@ export class RegistroVehiculoComponent implements OnInit {
       }else{
         
         this.conectarServicio.registrarVehiculo( this.registroVehiculo.value )
+          .subscribe( resp => {
+            console.log(resp)
+          }, (error) => {
+            console.log(error)
+          })
    
       }
 

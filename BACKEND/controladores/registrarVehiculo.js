@@ -12,16 +12,21 @@ const validator = require('validator');
 //controlador
 const registrarVehiculo = (req, resp) => {
 
+   //console.log("llega el mensaje");
    const datosFront = req.body;
+   console.log(datosFront);
+
+
 
   try{
 
     const numeroCedula    =  validator.isEmpty( datosFront.numeroCedula );
     const nombrePersona   =  validator.isEmpty( datosFront.nombrePersona );
     const marcaVehiculo   =  validator.isEmpty( datosFront.marcaVehiculo );
-    const modeloVechiculo =  validator.isEmpty( datosFront.placa );
+    const modeloVechiculo =  validator.isEmpty( datosFront.modeloVechiculo );
     const placa           =  validator.isEmpty( datosFront.placa );
     const precio          =  validator.isEmpty( datosFront.precio );
+    precio.toString()
 
 
     if( numeroCedula || nombrePersona || marcaVehiculo || modeloVechiculo || placa || precio){
@@ -73,9 +78,10 @@ const registrarVehiculo = (req, resp) => {
                     registroNuevo
                 })
             })
+             
 
 })
-
+   
  
 
 }
@@ -139,7 +145,7 @@ const mostrarUnVehiculo = ( req, resp ) => {
 
     try{
         
-        const placa = validator.isEmpty( datosFront.matricula );
+        const placa = validator.isEmpty( datosFront.matricula ); //si esta vacio
 
         if( placa ){
 

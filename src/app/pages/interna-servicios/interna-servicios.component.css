@@ -13,7 +13,26 @@
     width: 35%;
     margin: 40px auto;
 }
+.imagen_bienvenida{
 
+    margin-bottom: 40px;
+}
+
+.centrar_texto{
+
+    text-align: center;
+    width: 70%;
+    margin:auto
+}
+.txt_registro{
+    text-align: center;
+    padding-top: 10px;
+}
+.clic_registro_vehiculo{
+
+    text-decoration: underline;
+    cursor:pointer;
+}
 .logo_menu{
 
     width: 65%;
@@ -130,8 +149,10 @@
 
     width: 100%;
     max-width: 600px;
-    display: table;
-    margin:auto;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
 }
 
 .contendor_tabla{

@@ -78,7 +78,6 @@ export class LoginComponent {
             console.log(resp);
 
             //ingreso a la interna
-        
             localStorage.setItem('cedula', resp.respUnRegistro.numeroCedula );
             localStorage.setItem('nombre', resp.respUnRegistro.nombre);
             localStorage.setItem('correo', resp.respUnRegistro.correo);

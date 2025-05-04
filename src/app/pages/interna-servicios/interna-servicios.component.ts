@@ -7,6 +7,10 @@ import { MovilidadService } from '../../servicios/movilidad.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 
 
+//-------suar ruta Router---------//
+import { Router } from "@angular/router"
+
+
 
 @Component({
 
@@ -26,6 +30,8 @@ export class InternaServiciosComponent implements OnInit{
 
   departamentos:any = []
   ciudades:any= [];
+
+  mostrarAlertaNoRegistro:boolean = false;
   
 
   datosDeUsuarioLogueado:any = []
@@ -39,7 +45,7 @@ export class InternaServiciosComponent implements OnInit{
   agendamientoCita:FormGroup
   formPerfil:FormGroup
 
-  constructor( private conectarServicios:MovilidadService, private fb:FormBuilder ){
+  constructor( private conectarServicios:MovilidadService, private fb:FormBuilder, private usarRuta:Router ){
     
   
  
@@ -114,7 +120,7 @@ export class InternaServiciosComponent implements OnInit{
     this.conectarServicios.cargarPerfil(cedula)    
       .subscribe( (resp:any) => {
 
-         // console.log(resp);
+         //console.log(resp);
           this.datosDeUsuarioLogueado = resp;
           //---formulario cargue perfil----//
           this.formPerfil = this.fb.group({
@@ -137,7 +143,7 @@ export class InternaServiciosComponent implements OnInit{
         
          this.ciudades = this.departamentos[resp.respUsuario.departamento].ciudades;
          
-         //console.log(this.ciudades)
+         console.log(this.ciudades)
      
 
         }, (error => {
@@ -147,10 +153,20 @@ export class InternaServiciosComponent implements OnInit{
       }))
       
 
+      
     //----cargar datos del vahiculo----//
     this.conectarServicios.cargarDatosVehiculo( cedula )
          .subscribe( (resp:any) => {
-        
+          
+          console.log(resp)
+
+          if(resp.respVehiculo.length == 0){
+              
+            this.mostrarAlertaNoRegistro = true;
+          
+
+          }          
+
           this.txtVehiculo = resp.mensaje
 
               console.log(resp.respVehiculo)
@@ -187,6 +203,14 @@ export class InternaServiciosComponent implements OnInit{
 
   }
   
+  cerrarSesion(){
+  
+      this.conectarServicios.cerrarSesion()
+
+      this.usarRuta.navigate( ['/login'] )
+    
+  }
+
   miPerfil(){
   
   //pantallas

@@ -1293,7 +1293,7 @@ export class MovilidadService {
   constructor( private usarHttp: HttpClient) { 
 
     this.leerTokenAlCargar();
-
+    
   }
   
 
@@ -1397,12 +1397,11 @@ export class MovilidadService {
 
     }
   
-
+  console.log(datosLogin)
     return this.usarHttp.post('http://localhost:3000/loginUsuarios', datosLogin)
             .pipe(
               map( (resp:any) => {
       
-                   
                   this.guardarTokenStorage( resp.generarToken )
                   return resp;
               })
@@ -1439,6 +1438,12 @@ export class MovilidadService {
    return this.guardarToken.length > 0
 
   }
+
+  cerrarSesion(){
+
+    localStorage.removeItem('Token');
+
+  }
  //-----------------FIN LOGIN USUARIO---------------//
   
 
@@ -1454,23 +1459,23 @@ export class MovilidadService {
 
       numeroCedula    : FormREVehiculo.numeroCedula,
       nombrePersona   : FormREVehiculo.nombrePersona,
-      marcaVehiculo   : FormREVehiculo.nombrePersona,
+      marcaVehiculo   : FormREVehiculo.marcaVehiculo,
       modeloVechiculo : FormREVehiculo.modeloVechiculo,
       placa           : FormREVehiculo.placa,
-      precio          : FormREVehiculo
+      precio          : String(FormREVehiculo.precio) //convertirmos el precio en un string
 
     }
 
-    console.log(datosREvehiculo);
+    return this.usarHttp.post('http://localhost:3000/registrarVehiculos', datosREvehiculo)
 
   }
 
   
+
+
   //-----cargar datos de perfil------//
   cargarPerfil(cedula:any){
   
-
-
     const documento = {
        
       NumCedula: cedula
@@ -1527,7 +1532,8 @@ export class MovilidadService {
 
       matricula : placa
     }
-
+  
+    console.log(placaAuto.matricula);
     return this.usarHttp.post('http://localhost:3000/mostrarUnVehiculo', placaAuto)
             
   }

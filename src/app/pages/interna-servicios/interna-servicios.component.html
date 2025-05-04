@@ -17,7 +17,8 @@
                 <div class="contenedor_cerrar">
                     <img alt="Image placeholder" src="https://vus.circulemosdigital.com.co/assets/img/theme/profile.png" class="tw-cursor-pointer">
 
-                    <p class="texto_nombre">{{ nombreBienvenida }} <span class="texto_cerrar_sesion"> Cerrar sesion</span></p>
+                    <p class="texto_nombre">{{ nombreBienvenida }} <span class="texto_cerrar_sesion" (click)="cerrarSesion()"> Cerrar sesion</span></p>
+                
                 </div>
             </div>
 
@@ -213,13 +214,20 @@
 
 
             <!--mi vehiculo-->
+            
             <div class="container" *ngIf="pantallaMiVehiculo">
+                
+
                 <div class="row ancho_fila">
                     <div class="col-md.12">
                         <h1 _ngcontent-ng-c2098319837="" class="nombre_bienvenida">Historial de tu vehiculo</h1>
                         <p>{{ txtVehiculo }}</p>
 
                         <img _ngcontent-ng-c2098319837="" src="https://vus.circulemosdigital.com.co/assets/svg/usuario-mesa-trabajo.svg" class="imagen_bienvenida">
+
+                        <div class="alert alert-primary centrar_texto" role="alert" *ngIf="mostrarAlertaNoRegistro">No tienes un vehiculo registrado</div>
+                        <p class="txt_registro" *ngIf="mostrarAlertaNoRegistro" >¿queres registrar tu vehiculo? <span class="clic_registro_vehiculo" [routerLink]="['/registroVehiculo']">haz clic aca</span></p>
+                        
 
                         <table class="table table-dark contendor_tabla" *ngFor="let auto of vehiculosEncontrados; let i = index">
                             <tbody>
