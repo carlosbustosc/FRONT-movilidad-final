@@ -1471,8 +1471,6 @@ export class MovilidadService {
   }
 
   
-
-
   //-----cargar datos de perfil------//
   cargarPerfil(cedula:any){
   
