@@ -1350,7 +1350,7 @@ export class MovilidadService {
       ciudad        :  formularioRegistro.ciudad  
     }
       
-    return this.usarHttp.post('http://localhost:3000/registarUsuario', datosRegistro)
+    return this.usarHttp.post('https://back-movilidad.onrender.com/registarUsuario', datosRegistro)
 
   }
   
@@ -1380,7 +1380,7 @@ export class MovilidadService {
 
     console.log(datosActualizar)
 
-    return this.usarHttp.put('http://localhost:3000/actualizarUsuario', datosActualizar );
+    return this.usarHttp.put('https://back-movilidad.onrender.com/actualizarUsuario', datosActualizar );
     
     
   }
@@ -1398,7 +1398,7 @@ export class MovilidadService {
     }
   
   console.log(datosLogin)
-    return this.usarHttp.post('http://localhost:3000/loginUsuarios', datosLogin)
+    return this.usarHttp.post('https://back-movilidad.onrender.com/loginUsuarios', datosLogin)
             .pipe(
               map( (resp:any) => {
       
@@ -1466,9 +1466,11 @@ export class MovilidadService {
 
     }
 
-    return this.usarHttp.post('http://localhost:3000/registrarVehiculos', datosREvehiculo)
+    return this.usarHttp.post('https://back-movilidad.onrender.com/registrarVehiculos', datosREvehiculo)
 
   }
+
+  
 
   
   //-----cargar datos de perfil------//
@@ -1481,7 +1483,7 @@ export class MovilidadService {
     }
    
 
-    return this.usarHttp.post('http://localhost:3000/unUsuario', documento);
+    return this.usarHttp.post('https://back-movilidad.onrender.com/unUsuario', documento);
 
   }
 
@@ -1502,7 +1504,7 @@ export class MovilidadService {
 
       }
 
-      return this.usarHttp.post('http://localhost:3000/agendarCita', datosAgendarCita);
+      return this.usarHttp.post('https://back-movilidad.onrender.com/agendarCita', datosAgendarCita);
   
     }
   
@@ -1517,7 +1519,7 @@ export class MovilidadService {
     }
     
 
-    return this.usarHttp.post('http://localhost:3000/traerUnVehiculo', documento);
+    return this.usarHttp.post('https://back-movilidad.onrender.com/traerUnVehiculo', documento);
 
 
   }
@@ -1532,7 +1534,7 @@ export class MovilidadService {
     }
   
     console.log(placaAuto.matricula);
-    return this.usarHttp.post('http://localhost:3000/mostrarUnVehiculo', placaAuto)
+    return this.usarHttp.post('https://back-movilidad.onrender.com/mostrarUnVehiculo', placaAuto)
             
   }
   
