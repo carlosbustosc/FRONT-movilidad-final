@@ -1,0 +1,817 @@
+
+//llamar json
+let ArregloDatosJson = [];
+let botonBusqueda;
+
+let botonTipoEntrada;
+let botonTipoEntradaGratis;
+let valueChangePais;
+
+let idBotonRegion; // btn Internacional con value por defecto
+let idBotonInternacional;
+
+let idClasificacion;
+
+
+let tipoEscenario;
+
+
+let tipoEntradaBoleta;
+let tipoEntradaGratis;
+
+
+let TipoBoletaDosSeleccionados;
+
+
+
+
+
+		//--------SELECT (TIPO DE  ESCENARIO)--------//
+		const tipoEscenarioSelect = document.getElementById('tipoEscenario');
+		tipoEscenarioSelect.addEventListener("change", (event) => {
+
+			tipoEscenario = event.target.value;
+			console.log(tipoEscenario)
+
+
+			//pintar botones segun Value
+			if ( (tipoEscenario == "Sala") || (tipoEscenario == "Plaza")){
+				
+				numComprobar1 = 1;
+				numComprobar2 = 0;
+
+				botonTipoEntrada = "Boleta"
+				botonTipoEntradaGratis = ""
+
+				document.getElementById('Boleta').classList.add('boton_seleccionado1')
+				document.getElementById('Gratis').classList.remove('boton_seleccionado1');
+			}
+
+			if(tipoEscenario == "Calle"){
+				
+				numComprobar1 = 0;
+				numComprobar2 = 1;
+
+				botonTipoEntradaGratis = "Gratis"
+				botonTipoEntrada = ""
+
+				document.getElementById('Gratis').classList.add('boton_seleccionado1');
+				document.getElementById('Boleta').classList.remove('boton_seleccionado1');
+			}
+		})
+
+
+
+
+
+
+		//-------------------CLICK BTN BOLETA -------------------//
+		let divSelectTipoEscenario = $("#tipoEscenario");
+		let numComprobar1 = 0;
+		let numComprobar2 = 0;
+		//click boleta
+		document.getElementById('Boleta').addEventListener("click", () => {
+
+			//colocar estilos al boton
+			if(numComprobar1 == 0){
+				
+				tipoEscenario = ""
+				//---value
+				botonTipoEntrada = event.target.id;
+		
+				
+
+				//--visual boton
+				document.getElementById('Boleta').classList.add('boton_seleccionado1');
+			
+				numComprobar1 = 1;
+
+
+				tipoEntradaBoleta = true;
+				if(tipoEntradaGratis == true){
+
+					//llenar combo
+					$(".remover_escenario").remove()
+					html = `<option value="Sala"  class="boleta remover_escenario">Sala</option>
+							<option value="Plaza" class="boleta remover_escenario">Plaza</option>
+							<option value="Calle" class="calle  remover_escenario">Calle</option>`
+					divSelectTipoEscenario.append(html)
+
+				}else{
+
+					//llenar combo
+					$(".remover_escenario").remove()
+					html = `<option value="Sala"  class="boleta remover_escenario">Sala</option>
+							<option value="Plaza" class="boleta remover_escenario">Plaza</option>`
+					divSelectTipoEscenario.append(html)
+
+				}
+				
+
+			
+			}else{
+
+			
+				tipoEscenario = ""
+				//--value
+				botonTipoEntrada = ""
+			
+
+				//---visual boton
+				document.getElementById('Boleta').classList.remove('boton_seleccionado1');
+				numComprobar1 = 0;
+
+				//llenar combo
+				tipoEntradaBoleta = false
+				;
+				if(tipoEntradaGratis == true){
+					$(".remover_escenario").remove()
+					html = `<option value="Calle" class="calle  remover_escenario">Calle</option>`
+					divSelectTipoEscenario.append(html)
+				}else{
+
+					$(".remover_escenario").remove()
+					html = `<option value="Sala"  class="boleta remover_escenario">Sala</option>
+						<option value="Plaza" class="boleta remover_escenario">Plaza</option>
+						<option value="Calle" class="calle  remover_escenario">Calle</option>`
+					divSelectTipoEscenario.append(html)
+				}
+				
+				
+				
+				
+
+			}
+			
+		})
+
+
+
+		//-------------------CLICK BTN GRATIS-------------------//
+		//click boleta
+		document.getElementById('Gratis').addEventListener("click", () => {
+
+			
+			//colocar estilos al boton
+			if(numComprobar2 == 0){
+
+				tipoEscenario = ""
+				//---value
+				botonTipoEntradaGratis = event.target.id;
+			
+			
+
+				//--visual boton
+				document.getElementById('Gratis').classList.add('boton_seleccionado1');
+			
+
+				numComprobar2 = 1;
+
+
+				//llenar combo
+				tipoEntradaGratis = true;
+
+				if(tipoEntradaBoleta == true){
+
+					$(".remover_escenario").remove()
+					html = `<option value="Sala"  class="boleta remover_escenario">Sala</option>
+							<option value="Plaza" class="boleta remover_escenario">Plaza</option>
+							<option value="Calle" class="calle  remover_escenario">Calle</option>`
+							divSelectTipoEscenario.append(html)
+
+				}else{
+
+					$(".remover_escenario").remove()
+					html = `<option value="Calle" class="calle  remover_escenario">Calle</option>`
+					divSelectTipoEscenario.append(html)
+				}
+				
+				
+			}else{
+
+				
+				tipoEscenario = ""
+				//--value
+				botonTipoEntradaGratis = ""
+				console.log(botonTipoEntradaGratis)
+
+				//---visual boton
+				document.getElementById('Gratis').classList.remove('boton_seleccionado1');
+				numComprobar2 = 0;
+
+				tipoEntradaGratis = false;
+
+
+				//llenar combo
+				
+				if(tipoEntradaBoleta == true){
+					$(".remover_escenario").remove()
+					html = `<option value="Sala"  class="boleta remover_escenario">Sala</option>
+							<option value="Plaza" class="boleta remover_escenario">Plaza</option>
+							`
+					divSelectTipoEscenario.append(html)
+				}else{
+
+					$(".remover_escenario").remove()
+					html = `<option value="Sala"  class="boleta remover_escenario">Sala</option>
+						<option value="Plaza" class="boleta remover_escenario">Plaza</option>
+						<option value="Calle" class="calle  remover_escenario">Calle</option>`
+					divSelectTipoEscenario.append(html)
+				}
+				
+				
+
+			}
+			
+		})
+
+
+
+		/*
+		let tipoDeEntradaBtns = document.querySelectorAll('.botonesTipoEntrada');
+		tipoDeEntradaBtns.forEach( div => {
+			div.addEventListener('click', () => {
+
+				botonTipoEntrada = event.target.id;
+				console.log(botonTipoEntrada)
+				
+				if(botonTipoEntrada == "Boleta"){
+
+					//seleccionar por defecto un option del select escenario
+					document.getElementById('tipoEscenario').value = "Boleta"
+
+					//colocar estilos al boton
+					document.getElementById('Boleta').classList.add('boton_seleccionado1')
+					document.getElementById('Gratis').classList.remove('boton_seleccionado1');
+				}
+
+				if(botonTipoEntrada == "Gratis"){
+
+					
+					//seleccionar por defecto un option del select escenario
+					document.getElementById('tipoEscenario').value = "Gratis"
+
+					//colocar estilos al boton
+					document.getElementById('Boleta').classList.remove('boton_seleccionado1')
+					document.getElementById('Gratis').classList.add('boton_seleccionado1');
+
+				}
+
+			})
+		})
+		*/
+
+
+
+
+		//----------SELECT PAIS/REGIÓN)-------//
+		const paisRegion = document.getElementById('pais');
+		paisRegion.addEventListener('change', (event) => {
+
+			valueChangePais = event.target.value;
+			console.log(valueChangePais )
+
+		})
+
+
+		
+	
+		//-----------CLICK CIRCULOS TEMA CLASIFICACION------------//
+		const botonesClasificacion = document.querySelectorAll(".boton_claificacion");
+			  botonesClasificacion.forEach( divs => {
+			
+			  	divs.addEventListener( "click", (event) => {
+			  		
+
+			  		divCirculo      = event.currentTarget;
+			  		idClasificacion = divCirculo.id;
+			  		console.log(idClasificacion)
+			  		
+			  		//quitar Clase de los botones
+			  		let botones = document.querySelectorAll(".boton_claificacion");
+			  		botones.forEach( quitarClass => {
+			  			quitarClass.classList.remove('agregarEstiloClaificacion')
+			  		})
+
+			  		//agregar clase
+			  		divCirculo.classList.add('agregarEstiloClaificacion');
+			  		
+			  		
+			  	 
+			  	})
+
+			  })
+
+
+
+
+
+
+fetch('https://www.eltiempo.com/infografias/2016/carteleras/data/dataCarteleras.json?hh6')
+
+	.then( response => {
+		return response.json();
+	})
+	.then( data => {
+
+		//tenemos ya los datos el JSON
+		dataJson = data.Hoja1; 
+		
+
+		//como viene en objetos, para filtrar lo metemos en un array
+		ArregloDatosJson.push(dataJson)
+		console.log( ArregloDatosJson[0] ) 
+
+
+		
+
+		//----------------------LLENAR COMBOS SEGUN LA ELECCION DEL USUARIO---------------------------------//
+		
+
+		//-----CARGAR SELECT REGION AUTOMATICAMENTE------//
+		let contenedorPaisRegion = $('#pais');
+		const noRepetirPais     = new Set();
+
+		function llenarCampoPais(){
+
+
+			let respPais = ArregloDatosJson[0].filter( llave => llave.Origen )
+			respPais.forEach( paisJSON => {
+				
+				if(!noRepetirPais.has( paisJSON.Pais ) ) {
+
+					noRepetirPais.add( paisJSON.Pais );
+					html = `<option value="${ paisJSON.Pais }" class="${ paisJSON.Origen } remover_option">${ paisJSON.Pais }</option>`
+					contenedorPaisRegion.append(html)
+				}
+
+			})
+
+		}
+
+		llenarCampoPais();
+
+
+		
+		//------Al seleccionar combo de LOCALIDAD me trae los escenarios de esa localidad--------//
+		const divSelectLocalidad = document.querySelector("#localidad");
+		let obtenerPais;
+		
+		divSelectLocalidad.addEventListener( "change", (event) => {
+
+				let respLocalidadJSON = ArregloDatosJson[0].filter( datosJson => datosJson.Localidad === event.target.value )
+				console.log(respLocalidadJSON);
+
+
+				//llenar combo Escenario
+				$(".remover_teatro").remove()
+
+				let comboEscenario = $('#escenario');
+				const noRepetirTeatro = new Set();
+
+				respLocalidadJSON.forEach( respLocalidades => {
+				
+					if (!noRepetirTeatro.has(respLocalidades.TeatroEscenario) ) {
+
+						noRepetirTeatro.add(respLocalidades.TeatroEscenario);
+						html = `<option value="${ respLocalidades.TeatroEscenario }" class="remover_teatro">${ respLocalidades.TeatroEscenario }</option>`
+						comboEscenario.append(html);
+					}
+
+				})
+
+		})
+
+
+
+
+		//------Al seleccionar combo de ESCENARIO dejar la localidad donde pertenece LOCALIDAD--------//
+		const divSelectEscenario = document.querySelector("#escenario");
+		let resultadoLocalidad;
+
+		divSelectEscenario.addEventListener( "change", (event) => {
+
+			let respLocalidadJSON = ArregloDatosJson[0].filter( datosJson => datosJson.TeatroEscenario === event.target.value )
+			respLocalidadJSON.forEach( resultadoTeatros => {
+				
+				resultadoLocalidad = resultadoTeatros.Localidad //teusaquillo x 4
+			})
+
+			console.log(resultadoLocalidad) // teusaquillo
+			if(resultadoLocalidad){
+
+				document.querySelector("#localidad").value = resultadoLocalidad // seleccionamos option value="teusquillo" en el select (LOCALIDAD)
+			}
+		})
+
+
+
+
+		/*
+		//-----select fecha----//
+		$("#fecha").change(function(event) {
+
+			let fecha1 = event.target.value;
+
+			let resDatosFecha = ArregloDatosJson[0].filter( llave => llave.Fecha === fecha1 );
+			console.log("resultado fecha: " + resDatosFecha)
+
+			//--llenar select hora
+			$(".remover_option").remove();
+
+			
+			let selectHora = $("#hora");
+			const NOrepeat1 = new Set();
+		
+			resDatosFecha.forEach( datos => {
+
+				if (!NOrepeat1.has(datos.Hora) ) {
+					
+					NOrepeat1.add(datos.Hora);
+					html = `<option value="${datos.Hora}" class="remover_option">${ datos.Hora }</option>`
+					selectHora.append(html)
+				}
+
+			})
+
+
+			//--llenar select duracion
+			let select = $("#duracion");
+			const NOrepeat2 = new Set();
+
+			resDatosFecha.forEach( datos => {
+
+				if (!NOrepeat2.has(datos.rangoDuracion) ) {
+					
+					NOrepeat1.add(datos.rangoDuracion);
+					html = `<option value="${datos.rangoDuracion }" class="remover_option">${ datos.rangoDuracion }</option>`
+					select.append(html)
+				}
+
+			})
+
+
+
+			
+			//--llenar tipoESCENARIO
+			let tipoESCENARIO = $("#tipoEscenario");
+			const NOrepeat3 = new Set();
+
+			resDatosFecha.forEach( datos => {
+
+				console.log(datos.Localidad)
+				if (!NOrepeat3.has(datos.TipoDeEscenario) ) {
+				     
+				     NOrepeat3.add(datos.TipoDeEscenario);
+					 html = `<option value="${datos.TipoDeEntrada }" class="remover_option">${ datos.TipoDeEscenario }</option>`
+					 tipoESCENARIO.append(html)
+				}
+
+			})
+
+
+			//--llenar select localidad
+			let selectLocalidad = $("#localidad");
+			const NOrepeat4 = new Set();
+
+			resDatosFecha.forEach( datos => {
+				if (!NOrepeat4.has(datos.Localidad) ) {
+
+					NOrepeat4.add(datos.Localidad);
+					html = `<option value="${datos.Localidad }" class="remover_option">${ datos.Localidad }</option>`
+					selectLocalidad.append(html)
+				}
+			})
+
+
+			//--llenar select Escenario
+			let selectEscenario = $("#escenario");
+			const NOrepeat5 = new Set();
+
+			resDatosFecha.forEach( datos => {
+
+				if (!NOrepeat5.has(datos.TeatroEscenario) ) {
+					
+					NOrepeat5.add(datos.TeatroEscenario);
+					html = `<option value="${datos.TeatroEscenario }" class="remover_option">${ datos.TeatroEscenario }</option>`
+					selectEscenario.append(html)
+				}
+
+			})
+
+
+			//--llenar select Pais/region
+			let selectPais = $("#pais");
+			const NOrepeat6 = new Set();
+
+			resDatosFecha.forEach( datos => {
+
+				if (!NOrepeat6.has(datos.Pais) ) {
+					
+					NOrepeat6.add(datos.Pais);
+					html = `<option value="${datos.Pais }" class="remover_option">${ datos.Pais }</option>`
+					selectPais.append(html)
+				}
+
+			})	
+		});
+		
+		*/
+
+
+
+
+			let comprobarBtnNacional = 0;
+			let comprobarBtnInternacional = 0;
+
+			let botonNacionalClicleado;
+
+			const selectPais = $('#pais');
+			const paisesSet = new Set();
+
+			//----------BTN PAIS NACIONAL y  BTN PAIS INTERNACIONAL---------//
+			let botonesRegion = document.querySelectorAll(".btnElegirRegion");
+			botonesRegion.forEach( div => {
+				div.addEventListener("click", (event) => {
+
+					idBotonRegion = event.target.id;
+					console.log(idBotonRegion)
+
+					let respRegion = ArregloDatosJson[0].filter( llave => llave.Origen === idBotonRegion ) // respuesta del JSON
+
+			
+
+					if(event.target.id == "Nacional"){ //BOTON NACIONAL
+						
+						if(comprobarBtnNacional == 0){
+
+							//----boton nacional clickeado----//
+							botonNacionalClicleado = true; 
+
+							if(comprobarBtnInternacional){ // SI ESTA ACTIVO EL BOTON DE INTERNACIONAL
+
+								//------llenar select pais dinamicamente----//
+								respRegion.forEach(pais => {
+								    if (!paisesSet.has(pais.Pais)) {
+								        paisesSet.add(pais.Pais);
+								        const html = `<option value="${pais.Pais}" class="Nacional">${pais.Pais}</option>`;
+								        selectPais.append(html);
+								    }
+								});
+							
+							
+							}else{ //----si no esta activo el boton NTERNACIONAL ---//
+
+								$(".Nacional, .Internacional").remove();
+
+								//------llenar select pais dinamicamente----//
+								respRegion.forEach(pais => {
+								    if (!paisesSet.has(pais.Pais)) {
+								        paisesSet.add(pais.Pais);
+								        const html = `<option value="${pais.Pais}" class="Nacional">${pais.Pais}</option>`;
+								        selectPais.append(html);
+								    }
+								});
+								//------fin llenar select pais dinamicamente----//
+							}
+
+							//document.querySelector("#pais").value = "Nacional"
+							document.getElementById('Nacional').classList.add('btnNacionalSeleccionado');
+							comprobarBtnNacional = 1;
+
+						}else{
+
+							comprobarBtnNacional = 0;
+							document.getElementById('Nacional').classList.remove('btnNacionalSeleccionado');
+
+							$(".Nacional").remove();
+
+							llenarCampoPais();
+						}
+						
+					}
+
+
+
+
+
+					if(event.target.id == "Internacional"){ //BOTON INTERNACIONAL
+						if(comprobarBtnInternacional == 0){
+
+							comprobarBtnInternacional = true;
+
+							//verificar si esta el boton NACIONAL clickeado
+							if(botonNacionalClicleado){
+								
+								//------llenar select pais dinamicamente----//
+								respRegion.forEach(pais => {
+									if (!paisesSet.has(pais.Pais)) {
+									    paisesSet.add(pais.Pais);
+									    const html = `<option value="${pais.Pais}" class="Internacional">${pais.Pais}</option>`;
+									    selectPais.append(html);
+									}
+								});
+							
+
+							}else{ // BOTON NACIONAL NO ESTA ACTIVO
+
+								$(".Nacional, .Internacional").remove();
+
+								//------llenar select pais dinamicamente----//
+								respRegion.forEach(pais => {
+									if (!paisesSet.has(pais.Pais)) {
+									    paisesSet.add(pais.Pais);
+									    const html = `<option value="${pais.Pais}" class="Internacional">${pais.Pais}</option>`;
+									    selectPais.append(html);
+									}
+								});
+							
+	
+							}
+							
+							//document.querySelector("#pais").value = "Internacional"
+							document.getElementById('Internacional').classList.add('btnInterSeleccionado');
+							comprobarBtnInternacional = 1;
+							
+
+						}else{
+
+							comprobarBtnInternacional = 0;
+							document.getElementById('Internacional').classList.remove('btnInterSeleccionado');
+							
+							$(".Internacional").remove();
+
+						}
+						
+					}
+				
+				})
+			})
+
+			
+
+		
+
+			//----------FILTRADO FINAL AL DAR BOTON BUSCAR------------//
+			botonBusqueda = document.getElementById('buscar');
+			botonBusqueda.addEventListener("click", () => {
+
+
+				const fecha            = document.getElementById('fecha').value;
+				const hora             = document.getElementById('hora').value;
+				const duracion         = document.getElementById('duracion').value;
+
+				
+				const valueTipoEscenario = tipoEscenario //change tipo de escenario
+
+
+				const btnTipoDeEntrada       = botonTipoEntrada;
+				const btnTipoDeEntradaGratis = botonTipoEntradaGratis
+
+
+				const localidad        = document.getElementById('localidad').value;
+				
+				const escenario        = document.getElementById('escenario').value;
+
+				const btnRegion        =  idBotonRegion;
+			
+
+				const valuePais       = valueChangePais;
+
+				const valueClasificacion = idClasificacion;
+
+
+
+
+				console.log(fecha)
+				console.log(hora)
+				console.log(duracion)
+
+				
+				console.log(valueTipoEscenario)// change - tipo de entrada (boleta o gratis)
+
+				console.log(btnTipoDeEntrada)//boton - tipo entrada por 
+				console.log(btnTipoDeEntradaGratis)// tipo de entrada gratis
+
+				if(btnTipoDeEntrada && btnTipoDeEntradaGratis){
+
+					TipoBoletaDosSeleccionados = true;
+					
+					
+				}else{
+
+					TipoBoletaDosSeleccionados = false;
+					
+				}
+
+
+				console.log(localidad)
+				console.log(escenario)
+
+				console.log(btnRegion)//boton - region - nacional / internacional 
+
+				
+				console.log(valuePais) // region pais por change
+
+				console.log(valueClasificacion)
+
+				
+				
+
+				//filtramos los value
+				const FiltrarJson = ArregloDatosJson[0].filter( llave =>  {
+
+					  let comprobar = true
+
+				
+					  //select fecha
+					  if (fecha) {
+				        comprobar = comprobar && llave.Fecha === fecha;
+				      }
+
+				      //select hora
+				      if (hora) {
+				        comprobar = comprobar && llave.Hora === hora;
+				      }
+
+				      //select duracion
+				      if (duracion) {
+				        comprobar = comprobar && llave.rangoDuracion === duracion;
+				      }
+
+				      //tipo de escenario
+				      if (valueTipoEscenario) {
+				        comprobar = comprobar && llave.TipoDeEscenario === valueTipoEscenario;
+				      }
+
+				      //select Tipo escenario
+				      /*
+				      if (TextEscenario) {
+				        comprobar = comprobar && llave.TipoDeEscenario === TextEscenario;
+				      }
+				      */
+
+				      //boton Tipo entrada boleta y gratis
+				      if(btnTipoDeEntrada && btnTipoDeEntradaGratis){
+
+				      	comprobar = comprobar &&  llave.TipoDeEntrada;
+				      
+				      }else{
+
+				      	  //boton Tipo entrada boleta
+				      	 if (btnTipoDeEntrada) {
+				        	comprobar = comprobar && llave.TipoDeEntrada === btnTipoDeEntrada;
+				     	 }
+				      
+					      //boton Tipo entrada gratis 
+					      if (btnTipoDeEntradaGratis) {
+					        comprobar = comprobar && llave.TipoDeEntrada === btnTipoDeEntradaGratis;
+					      }
+
+				      }
+				     
+				      
+				      
+				      
+				    
+				     
+
+				      //select localidad
+				      if (localidad) {
+				        comprobar = comprobar && llave.Localidad === localidad;
+				      }
+
+				      //select escenario
+				      if (escenario) {
+				        comprobar = comprobar && llave.TeatroEscenario === escenario;
+				      }
+
+				      //btn nacional / internacional 
+				      if (btnRegion) {
+				        comprobar = comprobar && llave.Origen === btnRegion;
+				      }
+
+				      //select pais
+				      if (valuePais) {
+				        comprobar = comprobar && llave.Pais === valuePais;
+				      }
+					
+					  //btn Clasificacion
+				      if (valueClasificacion) {
+				        comprobar = comprobar && llave.Categoria === valueClasificacion;
+				      }
+
+						
+					  return comprobar;
+
+				})
+
+				console.log(FiltrarJson) // resultado de filtro
+
+			})
+
+	})
+
+
+
+	

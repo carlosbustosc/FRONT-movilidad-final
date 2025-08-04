@@ -1,0 +1,118 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.alinear_derecha{
+
+	float: right; 
+}
+
+.base_botones {
+    width: 100%;
+    display: table;
+    margin-top: 0px;
+}
+.base_botones2{
+
+	width: 100%;
+    display: table;
+ 
+}
+
+.boton1 {
+    width: 50%;
+    float: left;
+    padding: 4px 10px;
+    border: 1px solid #B9AE07;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.boton2 {
+    width: 50%;
+    float: left;
+    padding: 4px 10px;
+    border: 1px solid #B9AE07;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.titulo_filtro {
+    font-size: 18px;
+    margin-bottom: 21px;
+}
+
+.contenedor_clasificaciones{
+
+	width: 100%;
+	display: table;
+}
+
+.boton_claificacion {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 100%;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+}
+
+.base_circulos{
+
+	width: auto;
+	display: table;
+	float: left;
+	margin: 4px 15px 10px 15px;
+}
+
+.text-clasificacion {
+    font-size: 12px;
+    padding: 6px 0px;
+}
+
+.letra_categoria {
+    padding: 4px 0px;
+}
+
+.boton_seleccionado1{
+
+	background-color: #F6E81E;
+	color: #000;
+	border-color: #F6E81E;
+}
+
+.btnSinSeleccion{
+
+	background-color: #EDA1A7;
+	border-color: #EDA1A7;
+	color: #fff;
+}
+
+.btnInterSinSeleccion{
+
+	background-color:#4721FB;
+    border-color:#4721FB;
+    color: #fff
+}
+
+.btnNacionalSeleccionado {
+    background-color: #fff;
+    border-color: #EDA1A7;
+    color: #EDA1A7;
+}
+
+.btnInterSeleccionado{
+
+	background-color: #fff;
+    border-color: #4721FB;
+    color: #4721FB;
+}
+
+.agregarEstiloClaificacion{
+	background-color: #000;
+	color: #fff;
+}
