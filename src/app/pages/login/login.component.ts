@@ -83,15 +83,17 @@ export class LoginComponent {
 
             console.log(resp);
 
+            setTimeout( () => {
+                this.usarRuta.navigate(['/interna']);
+            }, 2000)
+
             //ingreso a la interna
             localStorage.setItem('cedula', resp.respUnRegistro.numeroCedula );
             localStorage.setItem('nombre', resp.respUnRegistro.nombre);
             localStorage.setItem('correo', resp.respUnRegistro.correo);
   
 
-            setTimeout( () => {
-                this.usarRuta.navigate(['/interna']);
-            }, 2000)
+            
            
 
           

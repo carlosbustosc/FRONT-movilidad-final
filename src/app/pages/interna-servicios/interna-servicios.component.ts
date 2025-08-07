@@ -372,5 +372,17 @@ export class InternaServiciosComponent implements OnInit{
     }
 
   }
+  
+
+
+quitarScroll() {
+  
+  const body = document.querySelector('body');
+  
+  if (body) {
+    body.style.overflow = 'scroll'; // Esto desactiva el scroll
+  }
+}
+
 
 }

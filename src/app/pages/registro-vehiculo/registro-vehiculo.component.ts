@@ -109,9 +109,17 @@ export class RegistroVehiculoComponent implements OnInit {
         
         this.conectarServicio.registrarVehiculo( this.registroVehiculo.value )
           .subscribe( resp => {
-            console.log(resp)
-          }, (error) => {
-            console.log(error)
+
+            alert("Se ha registrado correctamente");
+
+            this.registroVehiculo.reset()
+            
+            //console.log(resp)
+          
+          }, (err) => {
+            
+            alert(err.error.mensaje)
+          
           })
    
       }

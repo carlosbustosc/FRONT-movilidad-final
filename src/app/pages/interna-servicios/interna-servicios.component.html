@@ -226,8 +226,9 @@
                         <img _ngcontent-ng-c2098319837="" src="https://vus.circulemosdigital.com.co/assets/svg/usuario-mesa-trabajo.svg" class="imagen_bienvenida">
 
                         <div class="alert alert-primary centrar_texto" role="alert" *ngIf="mostrarAlertaNoRegistro">No tienes un vehiculo registrado</div>
-                        <p class="txt_registro" *ngIf="mostrarAlertaNoRegistro" >¿queres registrar tu vehiculo? <span class="clic_registro_vehiculo" [routerLink]="['/registroVehiculo']">haz clic aca</span></p>
+                        <p class="txt_registro" *ngIf="mostrarAlertaNoRegistro" >¿queres registrar tu vehiculo? <span class="clic_registro_vehiculo" [routerLink]="['/registroVehiculo']" (click)="quitarScroll()">haz clic aca</span></p>
                         
+
 
                         <table class="table table-dark contendor_tabla" *ngFor="let auto of vehiculosEncontrados; let i = index">
                             <tbody>
