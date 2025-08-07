@@ -60,3 +60,32 @@ td {
     color: #0b1276;
     margin-top: 25px;
 }
+
+@media(max-width:650px){
+
+    .contenedor_principal_tarifas{
+    width: 100vw;
+    overflow-x: scroll;
+    display: inline-block;
+    padding: 47px 0px 120px 0px;
+    }
+  
+    .container.tarifas {
+        padding: 36px 45px;
+        background-color: #ffffffd6;
+        width: 1200px;
+        border-radius: 22px;
+    }
+
+
+.valor_tarifas {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 29px;
+}
+
+.table {
+    width: 1200px;
+}
+
+}

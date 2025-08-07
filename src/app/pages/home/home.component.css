@@ -40,3 +40,39 @@ p.texto_agendamiento {
     margin-bottom: 34px;
     text-align: center;
 }
+
+
+
+@media(max-width:650px){
+
+
+.container.contenedor_inicial {
+    background-color: #20223edb;
+    padding: 42px 40px;
+}
+
+
+.titulo_movilidad {
+    font-size: 26px;
+    line-height: 37px;
+}
+
+.tamano_imagen{
+
+    width: 100%;
+}
+
+
+p.texto_agendamiento {
+    font-size: 19px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 26px;
+    margin: 20px 0px 32px 0px;
+}
+
+.titulo_intermedio {
+    font-size: 22px;
+}
+
+}

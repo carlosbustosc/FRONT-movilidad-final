@@ -64,3 +64,36 @@
 .border-left {
     border-left: 1px solid #6148a3;
 }
+
+@media( max-width:650px ){
+
+
+.fomulario {
+    width: 100%;
+    padding: 47px 31px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.text-registro {
+    font-size: 19px;
+    margin-top: 25px;
+    margin-bottom: 27px;
+}
+
+.container-fluid.fondo_principal_login{
+        padding: 37px 0px 40px 0px;
+        height: auto;
+    }
+
+
+.volver.btn.btn-success {
+    background-color: #a68ee7;
+    background-image: none;
+    border: none;
+    margin-bottom: 40px;
+}
+
+
+}

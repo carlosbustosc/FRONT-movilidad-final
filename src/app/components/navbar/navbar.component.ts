@@ -9,6 +9,23 @@ export class NavbarComponent implements OnInit {
   
   botonLogin:boolean = true;
   botonPerfil:boolean = false;
+  
+
+  mostrarMenuPrincipal = true;
+
+
+
+
+  constructor(){
+
+     if (window.innerWidth < 768) {
+          
+          this.mostrarMenuPrincipal = false;
+      }
+
+  }
+
+
 
   ngOnInit(): void {
     
@@ -17,6 +34,17 @@ export class NavbarComponent implements OnInit {
       this.botonLogin  = false;
       this.botonPerfil = true;
     }
+
+  }
+
+
+  mostrarMenu(){
+  
+
+      if (window.innerWidth < 768) {
+          
+          this.mostrarMenuPrincipal = true;
+      }
 
   }
 

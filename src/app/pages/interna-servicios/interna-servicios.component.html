@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 ancho_de_menu">
+        <div class="col-md-3 ancho_de_menu" *ngIf="MOSTRARmenu">
             <img src="./assets/img/logo-pmss2.png" class="logo_menu">
 
             <li class="boton_interna btnPerfil" (click)="miPerfil()">Mi perfil</li>
@@ -23,6 +23,7 @@
             </div>
 
             <!--bienvenida-->
+            <button class="btn btn-primary boton_menu" (click)="mostrarMenu()">Menu</button>
             <div class="base_interna_principal" *ngIf="pantallaBienvenida">
                 <div class="base_bienvenida">
                     <h1 class="nombre_bienvenida">Hola {{ nombreBienvenida }} Bienvenido a tu perfil</h1>

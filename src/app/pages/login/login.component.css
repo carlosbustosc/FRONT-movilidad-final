@@ -8,3 +8,20 @@
     background-attachment: fixed;
 }
 
+@media( max-width:650px ){
+    
+.fomulario {
+    width: 100%;
+    padding: 47px 32px;
+}
+
+.text-registro {
+    font-size: 19px;
+    margin-top: 18px;
+}
+
+.volver.btn.btn-success {
+    margin-bottom: 30px;
+}
+
+}

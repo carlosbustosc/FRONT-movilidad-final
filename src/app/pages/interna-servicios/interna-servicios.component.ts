@@ -45,6 +45,10 @@ export class InternaServiciosComponent implements OnInit{
   agendamientoCita:FormGroup
   formPerfil:FormGroup
 
+
+  MOSTRARmenu: boolean = false;
+
+ 
   constructor( private conectarServicios:MovilidadService, private fb:FormBuilder, private usarRuta:Router ){
     
   
@@ -243,12 +247,24 @@ export class InternaServiciosComponent implements OnInit{
   this.pantallaCita = false;
   this.pantallaMiVehiculo = false;
   
-  
+
+  //cerrar menu responisve
+  if (window.innerWidth < 768) {
+      this.MOSTRARmenu = false;
+  }
+
 
   }
 
   agendarCita(){
   
+
+  //cerrar menu responisve
+  if (window.innerWidth < 768) {
+      this.MOSTRARmenu = false;
+  }
+
+
   this.ajustarScroll();
 
   //pantallas
@@ -268,6 +284,14 @@ export class InternaServiciosComponent implements OnInit{
   this.pantallaCita = false;
   this.pantallaMiVehiculo = true;
 
+
+
+   //cerrar menu responisve
+  if (window.innerWidth < 768) {
+      this.MOSTRARmenu = false;
+  }
+
+  
   }
 
 
@@ -383,6 +407,18 @@ quitarScroll() {
     body.style.overflow = 'scroll'; // Esto desactiva el scroll
   }
 }
+
+
+
+
+mostrarMenu(){
+
+  if (window.innerWidth < 768) {
+      this.MOSTRARmenu = true;
+  }
+
+}
+
 
 
 }

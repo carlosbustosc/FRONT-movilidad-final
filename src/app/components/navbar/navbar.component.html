@@ -2,9 +2,9 @@
 <div class="container-fluid contenedor_header">
     <div class="row quitar_margenes">
         <div class="col-md-4">
-            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_mobilidad"/>
+            <img src="https://www.movilidadbogota.gov.co/web/sites/default/files/field/image/logo-pmss.png" class="logo_mobilidad" (click)="mostrarMenu()"/>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" *ngIf="mostrarMenuPrincipal">
 
             <div class="menu_principal">
                 <li [routerLink]="['/home']">Inicio</li>

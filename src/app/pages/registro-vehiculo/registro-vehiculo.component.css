@@ -7,3 +7,37 @@
     background-size: cover;
     background-attachment: fixed;
 }
+
+
+@media( max-width:650px ){
+
+.fomulario {
+
+    width: 100%;
+    padding: 47px 35px;
+}
+
+
+.text-registro {
+    font-size: 19px;
+    margin-top: 17px;
+}
+
+.volver.btn.btn-success {
+    margin-bottom: 30px;
+}
+
+.container-fluid.fondo_principal_login {
+    padding: 0px;
+}
+
+
+.text-registro{
+    
+    font-size: 18px;
+    margin-top: 27px;
+    margin-bottom: 26px;
+}
+
+
+}
