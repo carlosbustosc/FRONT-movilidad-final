@@ -51,7 +51,21 @@ li.boton_ingresar{
 }
 
 
+.txt-menu{
+
+    display: none;
+}
+
 @media(max-width:650px){
+
+
+    .txt-menu{
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        color: #30324a;
+    }
+
 
 li {
         list-style: none;

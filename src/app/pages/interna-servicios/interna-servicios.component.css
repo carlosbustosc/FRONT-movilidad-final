@@ -178,6 +178,11 @@
 @media(max-width:650px){
 
 
+.texto_nombre{
+    width: 100%;
+    font-size: 17px;
+}
+
 .boton_menu{
 
     display: block;
@@ -224,10 +229,17 @@
         margin: 24px auto;
 }
 
-.fomulario {
+.fomulario{
+
     width: 100%;
-    padding: 40px 0px;
+    padding: 4px 0px 90px 0px;
 }
+
+.ajustar_scroll{
+    height: 80vh;
+    overflow-y: scroll;
+}
+
 
 .ancho_fila {
         width: 100%;

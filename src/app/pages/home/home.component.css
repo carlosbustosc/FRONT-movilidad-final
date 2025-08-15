@@ -76,3 +76,18 @@ p.texto_agendamiento {
 }
 
 }
+
+@media(max-width:385px){
+
+
+    .titulo_movilidad {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    p.texto_agendamiento {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+}

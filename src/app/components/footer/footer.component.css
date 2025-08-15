@@ -17,3 +17,18 @@
     line-height: 24px;
     margin-bottom: 4px;
 }
+
+@media(max-width:650px){
+
+
+.contenedor_footer{
+    background-color: #20223e;
+    padding: 40px 30px 60px 30px;
+}
+
+.titulo_atencion{
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+}

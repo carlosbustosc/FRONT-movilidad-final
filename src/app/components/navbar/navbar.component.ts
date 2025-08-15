@@ -12,22 +12,26 @@ export class NavbarComponent implements OnInit {
   
 
   mostrarMenuPrincipal = true;
+  num:any= 0;
 
+
+  txtMenu:string = "Toque el logo para ver el menu"
 
 
 
   constructor(){
-
-     if (window.innerWidth < 768) {
-          
-          this.mostrarMenuPrincipal = false;
-      }
 
   }
 
 
 
   ngOnInit(): void {
+
+     if (window.innerWidth < 768) {
+          
+          this.mostrarMenuPrincipal = false;
+      }
+      
     
     if( localStorage.getItem('Token') ){
         
@@ -38,12 +42,32 @@ export class NavbarComponent implements OnInit {
   }
 
 
+
+
+
   mostrarMenu(){
-  
+
 
       if (window.innerWidth < 768) {
           
+        if( this.num == 0){
+            
           this.mostrarMenuPrincipal = true;
+          this.num = 1;
+          console.log(this.num)
+
+          this.txtMenu = "Toque el logo para esconder el menu"
+
+        }else{
+          
+          this.mostrarMenuPrincipal = false;
+          this.num = 0
+          console.log( this.num )
+
+          this.txtMenu = "Toque el logo para ver el menu"
+
+        }
+          
       }
 
   }

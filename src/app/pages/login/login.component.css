@@ -15,9 +15,12 @@
     padding: 47px 32px;
 }
 
-.text-registro {
-    font-size: 19px;
-    margin-top: 18px;
+.text-registro{
+    
+    font-size: 18px;
+    margin-top: 26px;
+    text-align: center;
+    margin-bottom: 28px;
 }
 
 .volver.btn.btn-success {

@@ -46,7 +46,7 @@ export class InternaServiciosComponent implements OnInit{
   formPerfil:FormGroup
 
 
-  MOSTRARmenu: boolean = false;
+  MOSTRARmenu: boolean = true;
 
  
   constructor( private conectarServicios:MovilidadService, private fb:FormBuilder, private usarRuta:Router ){
@@ -116,6 +116,14 @@ export class InternaServiciosComponent implements OnInit{
 
 
   ngOnInit(): void {
+
+
+      if (window.innerWidth < 768) {
+  
+         this.MOSTRARmenu = false;
+      
+      }
+
       
     this.nombreBienvenida = localStorage.getItem('nombre');
     const cedula = localStorage.getItem('cedula');
